@@ -13,7 +13,18 @@
 		828C2ADA29EEF407007A728B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 828C2AD829EEF407007A728B /* Main.storyboard */; };
 		828C2ADC29EEF409007A728B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 828C2ADB29EEF409007A728B /* Assets.xcassets */; };
 		828C2ADF29EEF409007A728B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 828C2ADD29EEF409007A728B /* LaunchScreen.storyboard */; };
+		828C2AF429EEF481007A728B /* RemoteFeedLoaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828C2AF329EEF481007A728B /* RemoteFeedLoaderTests.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		828C2AEE29EEF42A007A728B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 828C2AC729EEF407007A728B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 828C2ACE29EEF407007A728B;
+			remoteInfo = Planets;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		828C2ACF29EEF407007A728B /* Planets.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Planets.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -24,10 +35,19 @@
 		828C2ADB29EEF409007A728B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		828C2ADE29EEF409007A728B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		828C2AE029EEF409007A728B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		828C2AEA29EEF42A007A728B /* PlanetsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PlanetsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		828C2AF329EEF481007A728B /* RemoteFeedLoaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteFeedLoaderTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		828C2ACC29EEF407007A728B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		828C2AE729EEF42A007A728B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -41,6 +61,7 @@
 			isa = PBXGroup;
 			children = (
 				828C2AD129EEF407007A728B /* Planets */,
+				828C2AEB29EEF42A007A728B /* PlanetsTests */,
 				828C2AD029EEF407007A728B /* Products */,
 			);
 			sourceTree = "<group>";
@@ -49,6 +70,7 @@
 			isa = PBXGroup;
 			children = (
 				828C2ACF29EEF407007A728B /* Planets.app */,
+				828C2AEA29EEF42A007A728B /* PlanetsTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -65,6 +87,14 @@
 				828C2AE029EEF409007A728B /* Info.plist */,
 			);
 			path = Planets;
+			sourceTree = "<group>";
+		};
+		828C2AEB29EEF42A007A728B /* PlanetsTests */ = {
+			isa = PBXGroup;
+			children = (
+				828C2AF329EEF481007A728B /* RemoteFeedLoaderTests.swift */,
+			);
+			path = PlanetsTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -87,6 +117,24 @@
 			productReference = 828C2ACF29EEF407007A728B /* Planets.app */;
 			productType = "com.apple.product-type.application";
 		};
+		828C2AE929EEF42A007A728B /* PlanetsTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 828C2AF029EEF42A007A728B /* Build configuration list for PBXNativeTarget "PlanetsTests" */;
+			buildPhases = (
+				828C2AE629EEF42A007A728B /* Sources */,
+				828C2AE729EEF42A007A728B /* Frameworks */,
+				828C2AE829EEF42A007A728B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				828C2AEF29EEF42A007A728B /* PBXTargetDependency */,
+			);
+			name = PlanetsTests;
+			productName = PlanetsTests;
+			productReference = 828C2AEA29EEF42A007A728B /* PlanetsTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -99,6 +147,11 @@
 				TargetAttributes = {
 					828C2ACE29EEF407007A728B = {
 						CreatedOnToolsVersion = 14.2;
+					};
+					828C2AE929EEF42A007A728B = {
+						CreatedOnToolsVersion = 14.2;
+						LastSwiftMigration = 1420;
+						TestTargetID = 828C2ACE29EEF407007A728B;
 					};
 				};
 			};
@@ -116,6 +169,7 @@
 			projectRoot = "";
 			targets = (
 				828C2ACE29EEF407007A728B /* Planets */,
+				828C2AE929EEF42A007A728B /* PlanetsTests */,
 			);
 		};
 /* End PBXProject section */
@@ -128,6 +182,13 @@
 				828C2ADF29EEF409007A728B /* LaunchScreen.storyboard in Resources */,
 				828C2ADC29EEF409007A728B /* Assets.xcassets in Resources */,
 				828C2ADA29EEF407007A728B /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		828C2AE829EEF42A007A728B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -144,7 +205,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		828C2AE629EEF42A007A728B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				828C2AF429EEF481007A728B /* RemoteFeedLoaderTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		828C2AEF29EEF42A007A728B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 828C2ACE29EEF407007A728B /* Planets */;
+			targetProxy = 828C2AEE29EEF42A007A728B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		828C2AD829EEF407007A728B /* Main.storyboard */ = {
@@ -336,6 +413,55 @@
 			};
 			name = Release;
 		};
+		828C2AF129EEF42A007A728B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6D2849K6LE;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mdSolutions.PlanetsTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Planets.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Planets";
+			};
+			name = Debug;
+		};
+		828C2AF229EEF42A007A728B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6D2849K6LE;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mdSolutions.PlanetsTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Planets.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Planets";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -353,6 +479,15 @@
 			buildConfigurations = (
 				828C2AE429EEF409007A728B /* Debug */,
 				828C2AE529EEF409007A728B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		828C2AF029EEF42A007A728B /* Build configuration list for PBXNativeTarget "PlanetsTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				828C2AF129EEF42A007A728B /* Debug */,
+				828C2AF229EEF42A007A728B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
