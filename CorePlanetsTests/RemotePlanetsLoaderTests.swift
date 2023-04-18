@@ -5,7 +5,7 @@
 //  Created by Martin Doyle on 18/04/2023.
 //
 import XCTest
-import Planets
+import CorePlanets
 
 class RemotePlanetsLoaderTests: XCTestCase {
     

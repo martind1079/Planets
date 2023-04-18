@@ -1,6 +1,6 @@
 
 import XCTest
-import Planets
+import CorePlanets
 
 class URLSessionHTTPClientTests: XCTestCase {
 	
