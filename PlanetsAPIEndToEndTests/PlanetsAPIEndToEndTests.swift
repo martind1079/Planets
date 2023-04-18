@@ -15,6 +15,9 @@ final class PlanetsAPIEndToEndTests: XCTestCase {
         let client = URLSessionHTTPClient()
         let loader = RemotePlanetsLoader(url: testServerURL, client: client)
         
+        trackForMemoryLeaks(client)
+        trackForMemoryLeaks(loader)
+        
         let exp = expectation(description: "wait for response")
         var receivedResult: LoadPlanetsResult?
         loader.load { result in
