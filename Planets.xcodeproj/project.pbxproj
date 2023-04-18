@@ -13,7 +13,6 @@
 		828C2ADA29EEF407007A728B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 828C2AD829EEF407007A728B /* Main.storyboard */; };
 		828C2ADC29EEF409007A728B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 828C2ADB29EEF409007A728B /* Assets.xcassets */; };
 		828C2ADF29EEF409007A728B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 828C2ADD29EEF409007A728B /* LaunchScreen.storyboard */; };
-		828C2B0D29EF16D4007A728B /* PlanetsAPIEndToEndTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828C2B0C29EF16D4007A728B /* PlanetsAPIEndToEndTests.swift */; };
 		828C2B1E29EF1980007A728B /* CorePlanets.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 828C2B1629EF1980007A728B /* CorePlanets.framework */; };
 		828C2B2B29EF1997007A728B /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828C2AFA29EF0669007A728B /* HTTPClient.swift */; };
 		828C2B2C29EF1997007A728B /* PlanetsLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828C2AFD29EF06B5007A728B /* PlanetsLoader.swift */; };
@@ -24,10 +23,19 @@
 		828C2B3129EF19D0007A728B /* RemotePlanetsLoaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828C2AF329EEF481007A728B /* RemotePlanetsLoaderTests.swift */; };
 		828C2B3229EF19D3007A728B /* URLSessionHTTPClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828C2B0229EF0F7C007A728B /* URLSessionHTTPClientTests.swift */; };
 		828C2B3329EF19DA007A728B /* XCTestCase+MemoryLeakTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828C2AF629EF05A4007A728B /* XCTestCase+MemoryLeakTracking.swift */; };
+		828C2B3B29EF1E9A007A728B /* PlanetsAPIEndToEndTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828C2B3A29EF1E9A007A728B /* PlanetsAPIEndToEndTests.swift */; };
+		828C2B3C29EF1E9A007A728B /* CorePlanets.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 828C2B1629EF1980007A728B /* CorePlanets.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
 		828C2B1F29EF1980007A728B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 828C2AC729EEF407007A728B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 828C2B1529EF1980007A728B;
+			remoteInfo = CorePlanets;
+		};
+		828C2B3D29EF1E9A007A728B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 828C2AC729EEF407007A728B /* Project object */;
 			proxyType = 1;
@@ -54,21 +62,14 @@
 		828C2B0029EF0740007A728B /* PlanetsMapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanetsMapper.swift; sourceTree = "<group>"; };
 		828C2B0229EF0F7C007A728B /* URLSessionHTTPClientTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLSessionHTTPClientTests.swift; sourceTree = "<group>"; };
 		828C2B0429EF0FA5007A728B /* URLSessionHTTPClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLSessionHTTPClient.swift; sourceTree = "<group>"; };
-		828C2B0A29EF16D4007A728B /* PlanetsAPIEndToEndTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PlanetsAPIEndToEndTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		828C2B0C29EF16D4007A728B /* PlanetsAPIEndToEndTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetsAPIEndToEndTests.swift; sourceTree = "<group>"; };
 		828C2B1629EF1980007A728B /* CorePlanets.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CorePlanets.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		828C2B1D29EF1980007A728B /* CorePlanetsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CorePlanetsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		828C2B3829EF1E9A007A728B /* PlanetsAPIEndToEndTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PlanetsAPIEndToEndTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		828C2B3A29EF1E9A007A728B /* PlanetsAPIEndToEndTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetsAPIEndToEndTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		828C2ACC29EEF407007A728B /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		828C2B0729EF16D4007A728B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -90,6 +91,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		828C2B3529EF1E9A007A728B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				828C2B3C29EF1E9A007A728B /* CorePlanets.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -97,9 +106,9 @@
 			isa = PBXGroup;
 			children = (
 				828C2AD129EEF407007A728B /* Planets */,
-				828C2B0B29EF16D4007A728B /* PlanetsAPIEndToEndTests */,
 				828C2B1729EF1980007A728B /* CorePlanets */,
 				828C2B2129EF1981007A728B /* CorePlanetsTests */,
+				828C2B3929EF1E9A007A728B /* PlanetsAPIEndToEndTests */,
 				828C2AD029EEF407007A728B /* Products */,
 			);
 			sourceTree = "<group>";
@@ -108,9 +117,9 @@
 			isa = PBXGroup;
 			children = (
 				828C2ACF29EEF407007A728B /* Planets.app */,
-				828C2B0A29EF16D4007A728B /* PlanetsAPIEndToEndTests.xctest */,
 				828C2B1629EF1980007A728B /* CorePlanets.framework */,
 				828C2B1D29EF1980007A728B /* CorePlanetsTests.xctest */,
+				828C2B3829EF1E9A007A728B /* PlanetsAPIEndToEndTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -137,14 +146,6 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
-		828C2B0B29EF16D4007A728B /* PlanetsAPIEndToEndTests */ = {
-			isa = PBXGroup;
-			children = (
-				828C2B0C29EF16D4007A728B /* PlanetsAPIEndToEndTests.swift */,
-			);
-			path = PlanetsAPIEndToEndTests;
-			sourceTree = "<group>";
-		};
 		828C2B1729EF1980007A728B /* CorePlanets */ = {
 			isa = PBXGroup;
 			children = (
@@ -166,6 +167,14 @@
 				828C2B0229EF0F7C007A728B /* URLSessionHTTPClientTests.swift */,
 			);
 			path = CorePlanetsTests;
+			sourceTree = "<group>";
+		};
+		828C2B3929EF1E9A007A728B /* PlanetsAPIEndToEndTests */ = {
+			isa = PBXGroup;
+			children = (
+				828C2B3A29EF1E9A007A728B /* PlanetsAPIEndToEndTests.swift */,
+			);
+			path = PlanetsAPIEndToEndTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -197,23 +206,6 @@
 			productName = Planets;
 			productReference = 828C2ACF29EEF407007A728B /* Planets.app */;
 			productType = "com.apple.product-type.application";
-		};
-		828C2B0929EF16D4007A728B /* PlanetsAPIEndToEndTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 828C2B0E29EF16D4007A728B /* Build configuration list for PBXNativeTarget "PlanetsAPIEndToEndTests" */;
-			buildPhases = (
-				828C2B0629EF16D4007A728B /* Sources */,
-				828C2B0729EF16D4007A728B /* Frameworks */,
-				828C2B0829EF16D4007A728B /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = PlanetsAPIEndToEndTests;
-			productName = PlanetsAPIEndToEndTests;
-			productReference = 828C2B0A29EF16D4007A728B /* PlanetsAPIEndToEndTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		828C2B1529EF1980007A728B /* CorePlanets */ = {
 			isa = PBXNativeTarget;
@@ -251,6 +243,24 @@
 			productReference = 828C2B1D29EF1980007A728B /* CorePlanetsTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		828C2B3729EF1E9A007A728B /* PlanetsAPIEndToEndTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 828C2B3F29EF1E9A007A728B /* Build configuration list for PBXNativeTarget "PlanetsAPIEndToEndTests" */;
+			buildPhases = (
+				828C2B3429EF1E9A007A728B /* Sources */,
+				828C2B3529EF1E9A007A728B /* Frameworks */,
+				828C2B3629EF1E9A007A728B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				828C2B3E29EF1E9A007A728B /* PBXTargetDependency */,
+			);
+			name = PlanetsAPIEndToEndTests;
+			productName = PlanetsAPIEndToEndTests;
+			productReference = 828C2B3829EF1E9A007A728B /* PlanetsAPIEndToEndTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -264,13 +274,13 @@
 					828C2ACE29EEF407007A728B = {
 						CreatedOnToolsVersion = 14.2;
 					};
-					828C2B0929EF16D4007A728B = {
-						CreatedOnToolsVersion = 14.2;
-					};
 					828C2B1529EF1980007A728B = {
 						CreatedOnToolsVersion = 14.2;
 					};
 					828C2B1C29EF1980007A728B = {
+						CreatedOnToolsVersion = 14.2;
+					};
+					828C2B3729EF1E9A007A728B = {
 						CreatedOnToolsVersion = 14.2;
 					};
 				};
@@ -289,9 +299,9 @@
 			projectRoot = "";
 			targets = (
 				828C2ACE29EEF407007A728B /* Planets */,
-				828C2B0929EF16D4007A728B /* PlanetsAPIEndToEndTests */,
 				828C2B1529EF1980007A728B /* CorePlanets */,
 				828C2B1C29EF1980007A728B /* CorePlanetsTests */,
+				828C2B3729EF1E9A007A728B /* PlanetsAPIEndToEndTests */,
 			);
 		};
 /* End PBXProject section */
@@ -304,13 +314,6 @@
 				828C2ADF29EEF409007A728B /* LaunchScreen.storyboard in Resources */,
 				828C2ADC29EEF409007A728B /* Assets.xcassets in Resources */,
 				828C2ADA29EEF407007A728B /* Main.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		828C2B0829EF16D4007A728B /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -328,6 +331,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		828C2B3629EF1E9A007A728B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -338,14 +348,6 @@
 				828C2AD729EEF407007A728B /* ViewController.swift in Sources */,
 				828C2AD329EEF407007A728B /* AppDelegate.swift in Sources */,
 				828C2AD529EEF407007A728B /* SceneDelegate.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		828C2B0629EF16D4007A728B /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				828C2B0D29EF16D4007A728B /* PlanetsAPIEndToEndTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -372,6 +374,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		828C2B3429EF1E9A007A728B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				828C2B3B29EF1E9A007A728B /* PlanetsAPIEndToEndTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -379,6 +389,11 @@
 			isa = PBXTargetDependency;
 			target = 828C2B1529EF1980007A728B /* CorePlanets */;
 			targetProxy = 828C2B1F29EF1980007A728B /* PBXContainerItemProxy */;
+		};
+		828C2B3E29EF1E9A007A728B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 828C2B1529EF1980007A728B /* CorePlanets */;
+			targetProxy = 828C2B3D29EF1E9A007A728B /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -572,40 +587,6 @@
 			};
 			name = Release;
 		};
-		828C2B0F29EF16D4007A728B /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 6D2849K6LE;
-				GENERATE_INFOPLIST_FILE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 12.5;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.mdSolutions.PlanetsAPIEndToEndTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-			};
-			name = Debug;
-		};
-		828C2B1029EF16D4007A728B /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 6D2849K6LE;
-				GENERATE_INFOPLIST_FILE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 12.5;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.mdSolutions.PlanetsAPIEndToEndTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-			};
-			name = Release;
-		};
 		828C2B2629EF1981007A728B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -706,6 +687,40 @@
 			};
 			name = Release;
 		};
+		828C2B4029EF1E9A007A728B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6D2849K6LE;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 12.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mdSolutions.PlanetsAPIEndToEndTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		828C2B4129EF1E9A007A728B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6D2849K6LE;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 12.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mdSolutions.PlanetsAPIEndToEndTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -727,15 +742,6 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		828C2B0E29EF16D4007A728B /* Build configuration list for PBXNativeTarget "PlanetsAPIEndToEndTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				828C2B0F29EF16D4007A728B /* Debug */,
-				828C2B1029EF16D4007A728B /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		828C2B2529EF1981007A728B /* Build configuration list for PBXNativeTarget "CorePlanets" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -750,6 +756,15 @@
 			buildConfigurations = (
 				828C2B2929EF1981007A728B /* Debug */,
 				828C2B2A29EF1981007A728B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		828C2B3F29EF1E9A007A728B /* Build configuration list for PBXNativeTarget "PlanetsAPIEndToEndTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				828C2B4029EF1E9A007A728B /* Debug */,
+				828C2B4129EF1E9A007A728B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
