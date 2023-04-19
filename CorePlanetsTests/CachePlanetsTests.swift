@@ -8,45 +8,6 @@
 import XCTest
 @testable import CorePlanets
 
-protocol PlanetsStore {
-    typealias DeletionCompletion = (Error?) -> Void
-    typealias InsertionCompletion = (Error?) -> Void
-    
-    func deleteCachedPlanets(completion: @escaping DeletionCompletion)
-    func insert(_ items: [Planet], completion: @escaping InsertionCompletion)
-}
-
-class LocalPlanetsLoader {
-    
-    let store: PlanetsStore
-    public typealias SaveResult = Error?
-    
-    init(store: PlanetsStore) {
-        self.store = store
-    }
-    
-    func save(_ items: [Planet], completion: @escaping (Error?) -> Void) {
-        store.deleteCachedPlanets { [weak self] error in
-            guard let self = self else { return }
-            
-            if let cacheDeletionError = error {
-                completion(cacheDeletionError)
-            } else {
-                self.cache(items, with: completion)
-            }
-        }
-    }
-    
-    private func cache(_ items: [Planet], with completion: @escaping (SaveResult) -> Void) {
-        store.insert(items) { [weak self] error in
-            guard self != nil else { return }
-            
-            completion(error)
-        }
-    }
-    
-}
-
 final class CachePlanetsTests: XCTestCase {
 
     func test_init_doesNotMessageCache() {
@@ -166,17 +127,19 @@ final class CachePlanetsTests: XCTestCase {
         XCTAssertEqual(receivedError as NSError?, expectedError, file: file, line: line)
     }
     
-    private class PlanetsStoreSpy: PlanetsStore {
-        
+    class PlanetsStoreSpy: PlanetsStore {
+
         enum ReceivedMessage: Equatable {
             case deleteCachedPlanets
             case insert([Planet])
+            case retrieve
         }
         
         private(set) var receivedMessages = [ReceivedMessage]()
         
         private var deletionCompletions = [DeletionCompletion]()
         private var insertionCompletions = [InsertionCompletion]()
+        private var retrievalCompletions = [RetrievalCompletion]()
         
         func deleteCachedPlanets(completion: @escaping DeletionCompletion) {
             deletionCompletions.append(completion)
@@ -203,6 +166,24 @@ final class CachePlanetsTests: XCTestCase {
         func completeInsertionSuccessfully(at index: Int = 0) {
             insertionCompletions[index](nil)
         }
+        
+        func retrieve(completion: @escaping RetrievalCompletion) {
+            retrievalCompletions.append(completion)
+            receivedMessages.append(.retrieve)
+        }
+        
+        func completeRetrieval(with error: Error, at index: Int = 0) {
+            retrievalCompletions[index](.failure(error))
+        }
+        
+        func completeRetrievalWithEmptyCache(at index: Int = 0) {
+            retrievalCompletions[index](.empty)
+        }
+        
+        func completeRetrieval(with items: [Planet], at index: Int = 0) {
+            retrievalCompletions[index](.found(items: items))
+        }
+        
     }
     
     private func anyURL() -> URL {

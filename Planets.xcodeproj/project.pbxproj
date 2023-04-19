@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		8246DC1F29F0620B00E00954 /* CachePlanetsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8246DC1E29F0620B00E00954 /* CachePlanetsTests.swift */; };
+		8246DC2129F0716E00E00954 /* LoadPlanetsFromCacheTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8246DC2029F0716E00E00954 /* LoadPlanetsFromCacheTests.swift */; };
+		8246DC2529F072B600E00954 /* LocalPlanetsLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8246DC2429F072B600E00954 /* LocalPlanetsLoader.swift */; };
+		8246DC2729F072EA00E00954 /* PlanetsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8246DC2629F072EA00E00954 /* PlanetsStore.swift */; };
 		828C2AD329EEF407007A728B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828C2AD229EEF407007A728B /* AppDelegate.swift */; };
 		828C2AD529EEF407007A728B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828C2AD429EEF407007A728B /* SceneDelegate.swift */; };
 		828C2AD729EEF407007A728B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828C2AD629EEF407007A728B /* ViewController.swift */; };
@@ -48,6 +51,9 @@
 
 /* Begin PBXFileReference section */
 		8246DC1E29F0620B00E00954 /* CachePlanetsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CachePlanetsTests.swift; sourceTree = "<group>"; };
+		8246DC2029F0716E00E00954 /* LoadPlanetsFromCacheTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadPlanetsFromCacheTests.swift; sourceTree = "<group>"; };
+		8246DC2429F072B600E00954 /* LocalPlanetsLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalPlanetsLoader.swift; sourceTree = "<group>"; };
+		8246DC2629F072EA00E00954 /* PlanetsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetsStore.swift; sourceTree = "<group>"; };
 		828C2ACF29EEF407007A728B /* Planets.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Planets.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		828C2AD229EEF407007A728B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		828C2AD429EEF407007A728B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -152,12 +158,14 @@
 		828C2B1729EF1980007A728B /* CorePlanets */ = {
 			isa = PBXGroup;
 			children = (
+				8246DC2429F072B600E00954 /* LocalPlanetsLoader.swift */,
 				828C2B0029EF0740007A728B /* PlanetsMapper.swift */,
 				828C2AFC29EF06B5007A728B /* Planet.swift */,
 				828C2AFD29EF06B5007A728B /* PlanetsLoader.swift */,
 				828C2AFA29EF0669007A728B /* HTTPClient.swift */,
 				828C2B0429EF0FA5007A728B /* URLSessionHTTPClient.swift */,
 				828C2AF829EF0619007A728B /* RemotePlanetsLoader.swift */,
+				8246DC2629F072EA00E00954 /* PlanetsStore.swift */,
 			);
 			path = CorePlanets;
 			sourceTree = "<group>";
@@ -169,6 +177,7 @@
 				828C2AF329EEF481007A728B /* RemotePlanetsLoaderTests.swift */,
 				828C2B0229EF0F7C007A728B /* URLSessionHTTPClientTests.swift */,
 				8246DC1E29F0620B00E00954 /* CachePlanetsTests.swift */,
+				8246DC2029F0716E00E00954 /* LoadPlanetsFromCacheTests.swift */,
 			);
 			path = CorePlanetsTests;
 			sourceTree = "<group>";
@@ -360,9 +369,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				828C2B2D29EF1997007A728B /* Planet.swift in Sources */,
+				8246DC2729F072EA00E00954 /* PlanetsStore.swift in Sources */,
 				828C2B2F29EF1997007A728B /* URLSessionHTTPClient.swift in Sources */,
 				828C2B2C29EF1997007A728B /* PlanetsLoader.swift in Sources */,
 				828C2B2E29EF1997007A728B /* RemotePlanetsLoader.swift in Sources */,
+				8246DC2529F072B600E00954 /* LocalPlanetsLoader.swift in Sources */,
 				828C2B3029EF1997007A728B /* PlanetsMapper.swift in Sources */,
 				828C2B2B29EF1997007A728B /* HTTPClient.swift in Sources */,
 			);
@@ -375,6 +386,7 @@
 				8246DC1F29F0620B00E00954 /* CachePlanetsTests.swift in Sources */,
 				828C2B3129EF19D0007A728B /* RemotePlanetsLoaderTests.swift in Sources */,
 				828C2B3229EF19D3007A728B /* URLSessionHTTPClientTests.swift in Sources */,
+				8246DC2129F0716E00E00954 /* LoadPlanetsFromCacheTests.swift in Sources */,
 				828C2B3329EF19DA007A728B /* XCTestCase+MemoryLeakTracking.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
