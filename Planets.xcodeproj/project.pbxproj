@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8246DC1F29F0620B00E00954 /* CachePlanetsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8246DC1E29F0620B00E00954 /* CachePlanetsTests.swift */; };
 		828C2AD329EEF407007A728B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828C2AD229EEF407007A728B /* AppDelegate.swift */; };
 		828C2AD529EEF407007A728B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828C2AD429EEF407007A728B /* SceneDelegate.swift */; };
 		828C2AD729EEF407007A728B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828C2AD629EEF407007A728B /* ViewController.swift */; };
@@ -46,6 +47,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8246DC1E29F0620B00E00954 /* CachePlanetsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CachePlanetsTests.swift; sourceTree = "<group>"; };
 		828C2ACF29EEF407007A728B /* Planets.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Planets.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		828C2AD229EEF407007A728B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		828C2AD429EEF407007A728B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -166,6 +168,7 @@
 				828C2AF529EF05A4007A728B /* Helpers */,
 				828C2AF329EEF481007A728B /* RemotePlanetsLoaderTests.swift */,
 				828C2B0229EF0F7C007A728B /* URLSessionHTTPClientTests.swift */,
+				8246DC1E29F0620B00E00954 /* CachePlanetsTests.swift */,
 			);
 			path = CorePlanetsTests;
 			sourceTree = "<group>";
@@ -369,6 +372,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8246DC1F29F0620B00E00954 /* CachePlanetsTests.swift in Sources */,
 				828C2B3129EF19D0007A728B /* RemotePlanetsLoaderTests.swift in Sources */,
 				828C2B3229EF19D3007A728B /* URLSessionHTTPClientTests.swift in Sources */,
 				828C2B3329EF19DA007A728B /* XCTestCase+MemoryLeakTracking.swift in Sources */,
