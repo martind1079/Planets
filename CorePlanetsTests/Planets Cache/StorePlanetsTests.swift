@@ -1,5 +1,5 @@
 //
-//  CachePlanetsTests.swift
+//  StorePlanetsTests.swift
 //  CorePlanetsTests
 //
 //  Created by Martin Doyle on 19/04/2023.
@@ -8,7 +8,7 @@
 import XCTest
 @testable import CorePlanets
 
-final class CachePlanetsTests: XCTestCase {
+final class StorePlanetsTests: XCTestCase {
 
     func test_init_doesNotMessageCache() {
         let (_, store) = makeSUT()
@@ -37,13 +37,13 @@ final class CachePlanetsTests: XCTestCase {
     }
     
     func test_save_requestsNewCacheInsertionOnSuccessfulDeletion() {
-        let items = [uniqueItem, uniqueItem]
+        let feed = uniquePlanetFeed()
         let (sut, store) = makeSUT()
         
-        sut.save(items) { _ in }
+        sut.save(feed.models) { _ in }
         store.completeDeletionSuccessfully()
         
-        XCTAssertEqual(store.receivedMessages, [.deleteCachedPlanets, .insert(items)])
+        XCTAssertEqual(store.receivedMessages, [.deleteCachedPlanets, .insert(feed.local)])
     }
     
     func test_save_failsOnDeletionError() {
@@ -101,10 +101,6 @@ final class CachePlanetsTests: XCTestCase {
         XCTAssertTrue(receivedResults.isEmpty)
     }
     
-    private var uniqueItem: Planet {
-        Planet(name: "any name", rotationPeriod: "", orbitalPeriod: "", diameter: "", climate: "", gravity: "", terrain: "", surfaceWater: "", population: "", residents: [], films: [], created: "", edited: "", url: "https://anyUrl")
-    }
-    
     private func makeSUT() -> (sut: LocalPlanetsLoader, store: PlanetsStoreSpy) {
         
         let cache = PlanetsStoreSpy()
@@ -125,65 +121,6 @@ final class CachePlanetsTests: XCTestCase {
         wait(for: [exp], timeout: 1.0)
         
         XCTAssertEqual(receivedError as NSError?, expectedError, file: file, line: line)
-    }
-    
-    class PlanetsStoreSpy: PlanetsStore {
-
-        enum ReceivedMessage: Equatable {
-            case deleteCachedPlanets
-            case insert([Planet])
-            case retrieve
-        }
-        
-        private(set) var receivedMessages = [ReceivedMessage]()
-        
-        private var deletionCompletions = [DeletionCompletion]()
-        private var insertionCompletions = [InsertionCompletion]()
-        private var retrievalCompletions = [RetrievalCompletion]()
-        
-        func deleteCachedPlanets(completion: @escaping DeletionCompletion) {
-            deletionCompletions.append(completion)
-            receivedMessages.append(.deleteCachedPlanets)
-        }
-        
-        func completeDeletion(with error: Error, at index: Int = 0) {
-            deletionCompletions[index](error)
-        }
-        
-        func completeDeletionSuccessfully(at index: Int = 0) {
-            deletionCompletions[index](nil)
-        }
-        
-        func insert(_ items: [CorePlanets.Planet], completion: @escaping InsertionCompletion) {
-            insertionCompletions.append(completion)
-            receivedMessages.append(.insert(items))
-        }
-        
-        func completeInsertion(with error: Error, at index: Int = 0) {
-            insertionCompletions[index](error)
-        }
-        
-        func completeInsertionSuccessfully(at index: Int = 0) {
-            insertionCompletions[index](nil)
-        }
-        
-        func retrieve(completion: @escaping RetrievalCompletion) {
-            retrievalCompletions.append(completion)
-            receivedMessages.append(.retrieve)
-        }
-        
-        func completeRetrieval(with error: Error, at index: Int = 0) {
-            retrievalCompletions[index](.failure(error))
-        }
-        
-        func completeRetrievalWithEmptyCache(at index: Int = 0) {
-            retrievalCompletions[index](.empty)
-        }
-        
-        func completeRetrieval(with items: [Planet], at index: Int = 0) {
-            retrievalCompletions[index](.found(items: items))
-        }
-        
     }
     
     private func anyURL() -> URL {

@@ -1,6 +1,13 @@
+//
+//  LocalPlanet.swift
+//  CorePlanets
+//
+//  Created by Martin Doyle on 20/04/2023.
+//
+
 import Foundation
 
-public struct Planet: Decodable, Equatable {
+public struct LocalPlanet: Equatable {
     public let name: String
     public let rotationPeriod: String
     public let orbitalPeriod: String
@@ -34,3 +41,5 @@ public struct Planet: Decodable, Equatable {
         self.url = url
     }
 }
+
+

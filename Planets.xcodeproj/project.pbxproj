@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8246DC1F29F0620B00E00954 /* CachePlanetsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8246DC1E29F0620B00E00954 /* CachePlanetsTests.swift */; };
-		8246DC2129F0716E00E00954 /* LoadPlanetsFromCacheTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8246DC2029F0716E00E00954 /* LoadPlanetsFromCacheTests.swift */; };
+		8246DC1F29F0620B00E00954 /* StorePlanetsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8246DC1E29F0620B00E00954 /* StorePlanetsTests.swift */; };
+		8246DC2129F0716E00E00954 /* LoadPlanetsFromStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8246DC2029F0716E00E00954 /* LoadPlanetsFromStoreTests.swift */; };
 		8246DC2529F072B600E00954 /* LocalPlanetsLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8246DC2429F072B600E00954 /* LocalPlanetsLoader.swift */; };
 		8246DC2729F072EA00E00954 /* PlanetsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8246DC2629F072EA00E00954 /* PlanetsStore.swift */; };
 		828C2AD329EEF407007A728B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828C2AD229EEF407007A728B /* AppDelegate.swift */; };
@@ -30,6 +30,15 @@
 		828C2B3B29EF1E9A007A728B /* PlanetsAPIEndToEndTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828C2B3A29EF1E9A007A728B /* PlanetsAPIEndToEndTests.swift */; };
 		828C2B3C29EF1E9A007A728B /* CorePlanets.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 828C2B1629EF1980007A728B /* CorePlanets.framework */; };
 		828C2B4229EF227A007A728B /* XCTestCase+MemoryLeakTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828C2AF629EF05A4007A728B /* XCTestCase+MemoryLeakTracking.swift */; };
+		829C8DE429F19189007D5042 /* PlanetStoreSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 829C8DE329F19189007D5042 /* PlanetStoreSpecs.swift */; };
+		829C8DE629F19240007D5042 /* XCTestCase+FeedStoreSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 829C8DE529F19240007D5042 /* XCTestCase+FeedStoreSpecs.swift */; };
+		829C8DE829F19501007D5042 /* PlanetsStoreTestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 829C8DE729F19501007D5042 /* PlanetsStoreTestHelpers.swift */; };
+		829C8DEC29F197BE007D5042 /* XCTestCase+FailableRetrievePlanetsStoreSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 829C8DEB29F197BE007D5042 /* XCTestCase+FailableRetrievePlanetsStoreSpecs.swift */; };
+		829C8DEF29F1981F007D5042 /* XCTestCase+FailableInsertPlanetsStoreSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 829C8DEE29F1981F007D5042 /* XCTestCase+FailableInsertPlanetsStoreSpecs.swift */; };
+		829C8DF129F19831007D5042 /* XCTestCase+FailableDeletePlanetsStoreSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 829C8DF029F19831007D5042 /* XCTestCase+FailableDeletePlanetsStoreSpecs.swift */; };
+		82A4EC2929F11ECC00CBD4D7 /* CodablePlanetsStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A4EC2829F11ECC00CBD4D7 /* CodablePlanetsStoreTests.swift */; };
+		82A4EC2C29F1502F00CBD4D7 /* LocalPlanet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A4EC2B29F1502F00CBD4D7 /* LocalPlanet.swift */; };
+		82A4EC2F29F1819B00CBD4D7 /* CodablePlanetsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A4EC2E29F1819B00CBD4D7 /* CodablePlanetsStore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,8 +59,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		8246DC1E29F0620B00E00954 /* CachePlanetsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CachePlanetsTests.swift; sourceTree = "<group>"; };
-		8246DC2029F0716E00E00954 /* LoadPlanetsFromCacheTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadPlanetsFromCacheTests.swift; sourceTree = "<group>"; };
+		8246DC1E29F0620B00E00954 /* StorePlanetsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorePlanetsTests.swift; sourceTree = "<group>"; };
+		8246DC2029F0716E00E00954 /* LoadPlanetsFromStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadPlanetsFromStoreTests.swift; sourceTree = "<group>"; };
 		8246DC2429F072B600E00954 /* LocalPlanetsLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalPlanetsLoader.swift; sourceTree = "<group>"; };
 		8246DC2629F072EA00E00954 /* PlanetsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetsStore.swift; sourceTree = "<group>"; };
 		828C2ACF29EEF407007A728B /* Planets.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Planets.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -75,6 +84,15 @@
 		828C2B1D29EF1980007A728B /* CorePlanetsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CorePlanetsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		828C2B3829EF1E9A007A728B /* PlanetsAPIEndToEndTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PlanetsAPIEndToEndTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		828C2B3A29EF1E9A007A728B /* PlanetsAPIEndToEndTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetsAPIEndToEndTests.swift; sourceTree = "<group>"; };
+		829C8DE329F19189007D5042 /* PlanetStoreSpecs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetStoreSpecs.swift; sourceTree = "<group>"; };
+		829C8DE529F19240007D5042 /* XCTestCase+FeedStoreSpecs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+FeedStoreSpecs.swift"; sourceTree = "<group>"; };
+		829C8DE729F19501007D5042 /* PlanetsStoreTestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetsStoreTestHelpers.swift; sourceTree = "<group>"; };
+		829C8DEB29F197BE007D5042 /* XCTestCase+FailableRetrievePlanetsStoreSpecs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+FailableRetrievePlanetsStoreSpecs.swift"; sourceTree = "<group>"; };
+		829C8DEE29F1981F007D5042 /* XCTestCase+FailableInsertPlanetsStoreSpecs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+FailableInsertPlanetsStoreSpecs.swift"; sourceTree = "<group>"; };
+		829C8DF029F19831007D5042 /* XCTestCase+FailableDeletePlanetsStoreSpecs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+FailableDeletePlanetsStoreSpecs.swift"; sourceTree = "<group>"; };
+		82A4EC2829F11ECC00CBD4D7 /* CodablePlanetsStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodablePlanetsStoreTests.swift; sourceTree = "<group>"; };
+		82A4EC2B29F1502F00CBD4D7 /* LocalPlanet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalPlanet.swift; sourceTree = "<group>"; };
+		82A4EC2E29F1819B00CBD4D7 /* CodablePlanetsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodablePlanetsStore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,14 +176,10 @@
 		828C2B1729EF1980007A728B /* CorePlanets */ = {
 			isa = PBXGroup;
 			children = (
-				8246DC2429F072B600E00954 /* LocalPlanetsLoader.swift */,
-				828C2B0029EF0740007A728B /* PlanetsMapper.swift */,
 				828C2AFC29EF06B5007A728B /* Planet.swift */,
 				828C2AFD29EF06B5007A728B /* PlanetsLoader.swift */,
-				828C2AFA29EF0669007A728B /* HTTPClient.swift */,
-				828C2B0429EF0FA5007A728B /* URLSessionHTTPClient.swift */,
-				828C2AF829EF0619007A728B /* RemotePlanetsLoader.swift */,
-				8246DC2629F072EA00E00954 /* PlanetsStore.swift */,
+				82A4EC2D29F156BC00CBD4D7 /* Planets API */,
+				82A4EC2A29F14FFB00CBD4D7 /* PLanets Cache */,
 			);
 			path = CorePlanets;
 			sourceTree = "<group>";
@@ -173,11 +187,9 @@
 		828C2B2129EF1981007A728B /* CorePlanetsTests */ = {
 			isa = PBXGroup;
 			children = (
+				829C8DEA29F196A4007D5042 /* Planets API */,
 				828C2AF529EF05A4007A728B /* Helpers */,
-				828C2AF329EEF481007A728B /* RemotePlanetsLoaderTests.swift */,
-				828C2B0229EF0F7C007A728B /* URLSessionHTTPClientTests.swift */,
-				8246DC1E29F0620B00E00954 /* CachePlanetsTests.swift */,
-				8246DC2029F0716E00E00954 /* LoadPlanetsFromCacheTests.swift */,
+				82A4EC2729F11E2700CBD4D7 /* Planets Cache */,
 			);
 			path = CorePlanetsTests;
 			sourceTree = "<group>";
@@ -188,6 +200,69 @@
 				828C2B3A29EF1E9A007A728B /* PlanetsAPIEndToEndTests.swift */,
 			);
 			path = PlanetsAPIEndToEndTests;
+			sourceTree = "<group>";
+		};
+		829C8DE929F1962A007D5042 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				829C8DE729F19501007D5042 /* PlanetsStoreTestHelpers.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		829C8DEA29F196A4007D5042 /* Planets API */ = {
+			isa = PBXGroup;
+			children = (
+				828C2AF329EEF481007A728B /* RemotePlanetsLoaderTests.swift */,
+				828C2B0229EF0F7C007A728B /* URLSessionHTTPClientTests.swift */,
+			);
+			path = "Planets API";
+			sourceTree = "<group>";
+		};
+		829C8DED29F197D0007D5042 /* PlanetsStoreSpecs */ = {
+			isa = PBXGroup;
+			children = (
+				829C8DE529F19240007D5042 /* XCTestCase+FeedStoreSpecs.swift */,
+				829C8DEB29F197BE007D5042 /* XCTestCase+FailableRetrievePlanetsStoreSpecs.swift */,
+				829C8DEE29F1981F007D5042 /* XCTestCase+FailableInsertPlanetsStoreSpecs.swift */,
+				829C8DF029F19831007D5042 /* XCTestCase+FailableDeletePlanetsStoreSpecs.swift */,
+			);
+			path = PlanetsStoreSpecs;
+			sourceTree = "<group>";
+		};
+		82A4EC2729F11E2700CBD4D7 /* Planets Cache */ = {
+			isa = PBXGroup;
+			children = (
+				829C8DED29F197D0007D5042 /* PlanetsStoreSpecs */,
+				829C8DE929F1962A007D5042 /* Helpers */,
+				8246DC1E29F0620B00E00954 /* StorePlanetsTests.swift */,
+				8246DC2029F0716E00E00954 /* LoadPlanetsFromStoreTests.swift */,
+				82A4EC2829F11ECC00CBD4D7 /* CodablePlanetsStoreTests.swift */,
+				829C8DE329F19189007D5042 /* PlanetStoreSpecs.swift */,
+			);
+			path = "Planets Cache";
+			sourceTree = "<group>";
+		};
+		82A4EC2A29F14FFB00CBD4D7 /* PLanets Cache */ = {
+			isa = PBXGroup;
+			children = (
+				8246DC2429F072B600E00954 /* LocalPlanetsLoader.swift */,
+				8246DC2629F072EA00E00954 /* PlanetsStore.swift */,
+				82A4EC2B29F1502F00CBD4D7 /* LocalPlanet.swift */,
+				82A4EC2E29F1819B00CBD4D7 /* CodablePlanetsStore.swift */,
+			);
+			path = "PLanets Cache";
+			sourceTree = "<group>";
+		};
+		82A4EC2D29F156BC00CBD4D7 /* Planets API */ = {
+			isa = PBXGroup;
+			children = (
+				828C2AFA29EF0669007A728B /* HTTPClient.swift */,
+				828C2B0429EF0FA5007A728B /* URLSessionHTTPClient.swift */,
+				828C2AF829EF0619007A728B /* RemotePlanetsLoader.swift */,
+				828C2B0029EF0740007A728B /* PlanetsMapper.swift */,
+			);
+			path = "Planets API";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -368,11 +443,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				82A4EC2F29F1819B00CBD4D7 /* CodablePlanetsStore.swift in Sources */,
 				828C2B2D29EF1997007A728B /* Planet.swift in Sources */,
 				8246DC2729F072EA00E00954 /* PlanetsStore.swift in Sources */,
 				828C2B2F29EF1997007A728B /* URLSessionHTTPClient.swift in Sources */,
 				828C2B2C29EF1997007A728B /* PlanetsLoader.swift in Sources */,
 				828C2B2E29EF1997007A728B /* RemotePlanetsLoader.swift in Sources */,
+				82A4EC2C29F1502F00CBD4D7 /* LocalPlanet.swift in Sources */,
 				8246DC2529F072B600E00954 /* LocalPlanetsLoader.swift in Sources */,
 				828C2B3029EF1997007A728B /* PlanetsMapper.swift in Sources */,
 				828C2B2B29EF1997007A728B /* HTTPClient.swift in Sources */,
@@ -383,10 +460,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8246DC1F29F0620B00E00954 /* CachePlanetsTests.swift in Sources */,
+				829C8DEF29F1981F007D5042 /* XCTestCase+FailableInsertPlanetsStoreSpecs.swift in Sources */,
+				829C8DE829F19501007D5042 /* PlanetsStoreTestHelpers.swift in Sources */,
+				8246DC1F29F0620B00E00954 /* StorePlanetsTests.swift in Sources */,
 				828C2B3129EF19D0007A728B /* RemotePlanetsLoaderTests.swift in Sources */,
+				82A4EC2929F11ECC00CBD4D7 /* CodablePlanetsStoreTests.swift in Sources */,
+				829C8DE629F19240007D5042 /* XCTestCase+FeedStoreSpecs.swift in Sources */,
+				829C8DE429F19189007D5042 /* PlanetStoreSpecs.swift in Sources */,
 				828C2B3229EF19D3007A728B /* URLSessionHTTPClientTests.swift in Sources */,
-				8246DC2129F0716E00E00954 /* LoadPlanetsFromCacheTests.swift in Sources */,
+				829C8DEC29F197BE007D5042 /* XCTestCase+FailableRetrievePlanetsStoreSpecs.swift in Sources */,
+				8246DC2129F0716E00E00954 /* LoadPlanetsFromStoreTests.swift in Sources */,
+				829C8DF129F19831007D5042 /* XCTestCase+FailableDeletePlanetsStoreSpecs.swift in Sources */,
 				828C2B3329EF19DA007A728B /* XCTestCase+MemoryLeakTracking.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
