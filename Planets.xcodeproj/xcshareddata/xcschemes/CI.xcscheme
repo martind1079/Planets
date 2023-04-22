@@ -61,6 +61,16 @@
                ReferencedContainer = "container:Planets.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "826BFC9529F43FF600B943F0"
+               BuildableName = "PlanetsCacheIntegrationTests.xctest"
+               BlueprintName = "PlanetsCacheIntegrationTests"
+               ReferencedContainer = "container:Planets.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21513" systemVersion="21G72" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="ManagedCache" representedClassName="ManagedCache" syncable="YES">
+        <relationship name="items" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="ManagedPlanet" inverseName="cache" inverseEntity="ManagedPlanet"/>
+    </entity>
+    <entity name="ManagedFilm" representedClassName="ManagedFilm" syncable="YES" codeGenerationType="class">
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="planet" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ManagedPlanet" inverseName="films" inverseEntity="ManagedPlanet"/>
+    </entity>
+    <entity name="ManagedPlanet" representedClassName="ManagedPlanet" syncable="YES">
+        <attribute name="climate" attributeType="String"/>
+        <attribute name="created" attributeType="String"/>
+        <attribute name="diameter" attributeType="String"/>
+        <attribute name="edited" attributeType="String"/>
+        <attribute name="gravity" attributeType="String"/>
+        <attribute name="name" attributeType="String"/>
+        <attribute name="orbitalPeriod" attributeType="String"/>
+        <attribute name="population" attributeType="String"/>
+        <attribute name="rotationPeriod" attributeType="String"/>
+        <attribute name="surfaceWater" attributeType="String"/>
+        <attribute name="terrain" attributeType="String"/>
+        <attribute name="url" attributeType="String"/>
+        <relationship name="cache" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ManagedCache" inverseName="items" inverseEntity="ManagedCache"/>
+        <relationship name="films" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="ManagedFilm" inverseName="planet" inverseEntity="ManagedFilm"/>
+        <relationship name="residents" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="ManagedResident" inverseName="planet" inverseEntity="ManagedResident"/>
+    </entity>
+    <entity name="ManagedResident" representedClassName="ManagedResident" syncable="YES" codeGenerationType="class">
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="planet" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ManagedPlanet" inverseName="residents" inverseEntity="ManagedPlanet"/>
+    </entity>
+</model>
