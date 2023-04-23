@@ -65,8 +65,10 @@ final class PlanetsCacheIntegrationTests: XCTestCase {
     
     private func save(_ items: [Planet], with loader: LocalPlanetsLoader, file: StaticString = #file, line: UInt = #line) {
         let saveExp = expectation(description: "Wait for save completion")
-        loader.save(items) { saveError in
-            XCTAssertNil(saveError, "Expected to save items successfully", file: file, line: line)
+        loader.save(items) { result in
+            if case let Result.failure(error) = result {
+                XCTAssertNil(error, "Expected to save items successfully", file: file, line: line)
+            }
             saveExp.fulfill()
         }
         wait(for: [saveExp], timeout: 1.0)

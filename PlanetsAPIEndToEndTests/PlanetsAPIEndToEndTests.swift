@@ -19,7 +19,7 @@ final class PlanetsAPIEndToEndTests: XCTestCase {
         trackForMemoryLeaks(loader)
         
         let exp = expectation(description: "wait for response")
-        var receivedResult: LoadPlanetsResult?
+        var receivedResult: PlanetsLoader.Result?
         loader.load { result in
             receivedResult = result
             exp.fulfill()

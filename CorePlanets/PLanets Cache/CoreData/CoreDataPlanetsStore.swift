@@ -19,44 +19,30 @@ public class CoreDataPlanetsStore: PlanetsStore {
     
     public func retrieve(completion: @escaping RetrievalCompletion) {
         perform { context in
-            do {
-                if let cache = try ManagedCache.find(in: context) {
-                    completion(.found(items: cache.localFeed))
-                } else {
-                    completion(.empty)
-                }
-            } catch {
-                completion(.failure(error))
-            }
+            completion( Result {
+                try ManagedCache.find(in: context)?.localFeed
+            })
         }
     }
     
     public func deleteCachedPlanets(completion: @escaping DeletionCompletion) {
         perform { context in
-            do {
+            completion(Result {
                 try ManagedCache.find(in: context).map(context.delete).map(context.save)
-                completion(nil)
-            } catch {
-                completion(error)
-            }
+            })
         }
     }
     
     public func insert(_ items: [CorePlanets.LocalPlanet], completion: @escaping InsertionCompletion) {
         perform { context in
-            do {
+            completion(Result {
                 let managedCache = try ManagedCache.newUniqueInstance(in: context)
                 managedCache.items = ManagedPlanet.items(from: items, in: context)
                 
                 try context.save()
-                completion(nil)
-            } catch {
-                completion(error)
-            }
+            })
         }
     }
-    
-    
     
     private func perform(_ action: @escaping (NSManagedObjectContext) -> Void) {
         let context = self.context

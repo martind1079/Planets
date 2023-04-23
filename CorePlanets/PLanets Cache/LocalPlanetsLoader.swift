@@ -10,47 +10,48 @@ import Foundation
 public final class LocalPlanetsLoader {
     private let store: PlanetsStore
     
-    public typealias SaveResult = Error?
-    public typealias LoadResult = LoadPlanetsResult
+    public typealias SaveResult = Result<Void, Error>
+    public typealias LoadResult = PlanetsLoader.Result
     
     public init(store: PlanetsStore) {
         self.store = store
     }
     
     public func save(_ items: [Planet], completion: @escaping (SaveResult) -> Void) {
-        store.deleteCachedPlanets { [weak self] error in
+        store.deleteCachedPlanets { [weak self] deletionResult in
             guard let self = self else { return }
             
-            if let cacheDeletionError = error {
-                completion(cacheDeletionError)
-            } else {
+            switch deletionResult {
+            case .success:
                 self.cache(items, with: completion)
+            case.failure(let error):
+                completion(.failure(error))
             }
         }
     }
     
     public func load(completion: @escaping (LoadResult) -> Void) {
         store.retrieve { [weak self] result in
-            guard let self = self else { return }
+            guard self != nil else { return }
             switch result {
             case let .failure(error):
-                self.store.deleteCachedPlanets { _ in }
+                self?.store.deleteCachedPlanets { _ in }
                 completion(.failure(error))
 
-            case let .found(planets):
+            case let .success(.some(planets)):
                 completion(.success(planets.toModels()))
                 
-            case .empty:
+            case .success:
                 completion(.success([]))
             }
         }
     }
     
     private func cache(_ items: [Planet], with completion: @escaping (SaveResult) -> Void) {
-        store.insert(items.toLocal()) { [weak self] error in
+        store.insert(items.toLocal()) { [weak self] insertionResult in
             guard self != nil else { return }
             
-            completion(error)
+            completion(insertionResult)
         }
     }
 }

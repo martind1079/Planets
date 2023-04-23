@@ -10,6 +10,7 @@ import XCTest
 import CoreData
 
 final class CoreDataPlanetsStoreTests: XCTestCase, PlanetsStoreSpecs {
+    
     func test_retrieve_deliversEmptyOnEmptyCache() {
         let sut = makeSUT()
         assertThatRetrieveDeliversEmptyOnEmptyCache(on: sut)
@@ -23,6 +24,16 @@ final class CoreDataPlanetsStoreTests: XCTestCase, PlanetsStoreSpecs {
     func test_retrieve_deliversFoundValuesOnNonEmptyCache() {
         let sut = makeSUT()
         assertThatRetrieveDeliversFoundValuesOnNonEmptyCache(on: sut)
+    }
+    
+    func test_insert_deliversNoErrorOnEmptyCache() {
+        let sut = makeSUT()
+        assertThatInsertDeliversNoErrorOnEmptyCache(on: sut)
+    }
+    
+    func test_insert_deliversNoErrorOnNonEmptyCache() {
+        let sut = makeSUT()
+        assertThatInsertDeliversNoErrorOnNonEmptyCache(on: sut)
     }
     
     func test_insert_overridesPreviouslyInsertedCacheValues() {

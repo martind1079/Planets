@@ -9,19 +9,17 @@ public final class RemotePlanetsLoader: PlanetsLoader {
 		case invalidData
 	}
 	
-	public typealias Result = LoadPlanetsResult
-	
 	public init(url: URL, client: HTTPClient) {
 		self.url = url
 		self.client = client
 	}
 	
-	public func load(completion: @escaping (Result) -> Void) {
+    public func load(completion: @escaping (PlanetsLoader.Result) -> Void) {
 		client.get(from: url) { [weak self] result in
 			guard self != nil else { return }
 			
 			switch result {
-			case let .success(data, response):
+            case let .success((data, response)):
 				completion(PlanetsMapper.map(data, from: response))
 			case .failure:
 				completion(.failure(Error.connectivity))

@@ -9,6 +9,11 @@ import Foundation
 
 public class CodablePlanetsStore: PlanetsStore {
     
+    private enum Error: Swift.Error {
+        case failedToLoadData
+        case failedToFindStore
+    }
+    
     private struct CodablePlanet: Codable {
         let name: String
         let rotationPeriod: String
@@ -59,13 +64,13 @@ public class CodablePlanetsStore: PlanetsStore {
         let storeURL = self.storeURL
         queue.async {
             guard let data = try? Data(contentsOf: storeURL) else {
-                completion(.empty)
+                completion(.success(.none))
                 return
             }
             do {
                 let decoder = JSONDecoder()
                 let items = try decoder.decode([CodablePlanet].self, from: data)
-                completion(.found(items: items.map { $0.local }))
+                completion(.success(items.map { $0.local }))
             } catch {
                 completion(.failure(error))
             }
@@ -75,14 +80,11 @@ public class CodablePlanetsStore: PlanetsStore {
     public func insert(_ items: [LocalPlanet], completion: @escaping InsertionCompletion) {
         let storeURL = self.storeURL
         queue.async(flags: .barrier) {
-            do {
+            completion( Result {
                 let encoder = JSONEncoder()
                 let encoded = try encoder.encode(items.map(CodablePlanet.init))
                 try encoded.write(to: storeURL)
-                completion(nil)
-            } catch {
-                completion(error)
-            }
+            })
         }
     }
     
@@ -90,14 +92,11 @@ public class CodablePlanetsStore: PlanetsStore {
         let storeURL = self.storeURL
         queue.async(flags: .barrier) {
             guard FileManager.default.fileExists(atPath: storeURL.path) else {
-                return completion(nil)
+                return completion(.failure(Error.failedToFindStore))
             }
-            do {
+            completion( Result {
                 try FileManager.default.removeItem(at: storeURL)
-                completion(nil)
-            } catch {
-                completion(error)
-            }
+            })
         }
     }
 }

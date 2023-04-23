@@ -74,7 +74,7 @@ final class LoadPlanetsFromStoreTests: XCTestCase {
         let store = PlanetsStoreSpy()
         var sut: LocalPlanetsLoader? = LocalPlanetsLoader(store: store)
         
-        var receivedResults = [LoadPlanetsResult]()
+        var receivedResults = [PlanetsLoader.Result]()
         
         sut?.load {
             receivedResults.append($0)

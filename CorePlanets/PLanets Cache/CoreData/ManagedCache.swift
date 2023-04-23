@@ -23,6 +23,6 @@ extension ManagedCache {
 	}
 	
 	internal var localFeed: [LocalPlanet] {
-        return items.compactMap { ($0 as? ManagedPlanet)?.local } ?? []
+        return items.compactMap { ($0 as? ManagedPlanet)?.local }
 	}
 }
