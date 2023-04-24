@@ -1,5 +1,5 @@
 //
-//  PlanetTableViewCell.swift
+//  PlanetCell.swift
 //  PlanetsIOS
 //
 //  Created by Martin Doyle on 24/04/2023.

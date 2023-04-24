@@ -14,3 +14,13 @@ public struct Movie {
         self.name = name
     }
 }
+
+public extension Array where Element == Movie {
+    func movieList() -> String {
+        var results = [String]()
+        self.forEach {
+            results.append($0.name)
+        }
+        return results.joined(separator: ", ")
+    }
+}
