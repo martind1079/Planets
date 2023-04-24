@@ -28,9 +28,9 @@
             testExecutionOrdering = "random">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "828C2B3729EF1E9A007A728B"
-               BuildableName = "PlanetsAPIEndToEndTests.xctest"
-               BlueprintName = "PlanetsAPIEndToEndTests"
+               BlueprintIdentifier = "826BFC9529F43FF600B943F0"
+               BuildableName = "PlanetsCacheIntegrationTests.xctest"
+               BlueprintName = "PlanetsCacheIntegrationTests"
                ReferencedContainer = "container:Planets.xcodeproj">
             </BuildableReference>
          </TestableReference>

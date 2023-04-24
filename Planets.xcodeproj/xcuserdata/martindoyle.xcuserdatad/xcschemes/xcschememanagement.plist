@@ -4,35 +4,55 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>CI.xcscheme_^#shared#^_</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>3</integer>
-		</dict>
-		<key>CorePlanets.xcscheme_^#shared#^_</key>
+		<key>CI_IOS.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>2</integer>
 		</dict>
-		<key>Planets.xcscheme_^#shared#^_</key>
+		<key>CI_macOS.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
+		<key>CorePlanets.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>Planets.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>6</integer>
+		</dict>
 		<key>PlanetsAPIEndToEndTests.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>1</integer>
+			<integer>3</integer>
 		</dict>
 		<key>PlanetsCacheIntegrationTests.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>4</integer>
 		</dict>
+		<key>PlanetsIOS.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>5</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>826BFC9529F43FF600B943F0</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>8270CDB029F65C27009AE1F4</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>8270CDB729F65C28009AE1F4</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -58,6 +78,11 @@
 			<true/>
 		</dict>
 		<key>828C2B1C29EF1980007A728B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>828C2B3729EF1E9A007A728B</key>
 		<dict>
 			<key>primary</key>
 			<true/>

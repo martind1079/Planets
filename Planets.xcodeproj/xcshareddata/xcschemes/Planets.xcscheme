@@ -28,26 +28,6 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "828C2B0929EF16D4007A728B"
-               BuildableName = "PlanetsAPIEndToEndTests.xctest"
-               BlueprintName = "PlanetsAPIEndToEndTests"
-               ReferencedContainer = "container:Planets.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "828C2B1C29EF1980007A728B"
-               BuildableName = "CorePlanetsTests.xctest"
-               BlueprintName = "CorePlanetsTests"
-               ReferencedContainer = "container:Planets.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
