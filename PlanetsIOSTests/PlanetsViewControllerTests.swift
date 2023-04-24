@@ -205,7 +205,7 @@ final class PlanetsViewControllerTests: XCTestCase {
     
     private func makeSUT(file: StaticString = #file, line: UInt = #line) -> (sut: PlanetsViewController, loader: LoaderSpy) {
         let loader = LoaderSpy()
-        let sut = PlanetsViewController(loader: loader, movieLoader: loader)
+        let sut = FeedUIComoposer.feedComposedWith(loader: loader, movieLoader: loader)
         trackForMemoryLeaks(loader, file: file, line: line)
         trackForMemoryLeaks(sut, file: file, line: line)
         return (sut, loader)
@@ -260,7 +260,7 @@ final class PlanetsViewControllerTests: XCTestCase {
         
         // MARK:  MovieDataLoader methods
         
-        private struct TaskSpy: MoviewDataLoaderTask {
+        private struct TaskSpy: MovieDataLoaderTask {
             let cancelCalback: () -> Void
             func cancel() {
                 cancelCalback()
@@ -289,7 +289,7 @@ final class PlanetsViewControllerTests: XCTestCase {
             cancelledImagePaths.append(path)
         }
         
-        func loadMovie(from path: String, completion: @escaping (MovieDataLoader.Result) -> Void) -> MoviewDataLoaderTask {
+        func loadMovie(from path: String, completion: @escaping (MovieDataLoader.Result) -> Void) -> MovieDataLoaderTask {
             movieRequests.append((path, completion))
             return TaskSpy { [weak self] in self?.cancelledImagePaths.append(path) }
         }

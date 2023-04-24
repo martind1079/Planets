@@ -6,35 +6,26 @@
 //
 
 import UIKit
-import CorePlanets
 
 public class PlanetsViewController: UITableViewController, UITableViewDataSourcePrefetching {
+    
     private var refreshController: FeedRefreshController?
-    private var tableModel = [Planet]() {
+    var tableModel = [PlanetCellController]() {
         didSet { tableView.reloadData() }
     }
-    private var movieLoader: MovieDataLoader?
-    
-    var cellControllers = [IndexPath: PlanetCellController]()
-    
-    public convenience init(loader: PlanetsLoader, movieLoader: MovieDataLoader) {
-        self.init()
-        self.refreshController = FeedRefreshController(loader: loader)
-        self.movieLoader = movieLoader
-    }
-    
+        
     public override func viewDidLoad() {
         super.viewDidLoad()
         
         refreshControl = refreshController?.view
-        refreshController?.onRefresh = { [weak self] feed in
-            self?.tableModel = feed
-        }
         tableView.prefetchDataSource = self
         refreshController?.refresh()
     }
     
-    
+    convenience init(refreshController: FeedRefreshController) {
+        self.init()
+        self.refreshController = refreshController
+    }
     
     public override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tableModel.count
@@ -51,21 +42,18 @@ public class PlanetsViewController: UITableViewController, UITableViewDataSource
     }
     
     public func tableView(_ tableView: UITableView, cancelPrefetchingForRowsAt indexPaths: [IndexPath]) {
-        indexPaths.forEach(removeCellController)
+        indexPaths.forEach(caencelCellControllerLoad)
     }
     
     public override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        removeCellController(forRowAt: indexPath)
+        caencelCellControllerLoad(forRowAt: indexPath)
     }
     
     private func cellController(forRowAt indexPath: IndexPath) -> PlanetCellController {
-        let cellModel = tableModel[indexPath.row]
-        let cellController = PlanetCellController(model: cellModel, movieLoader: movieLoader!)
-        cellControllers[indexPath] = cellController
-        return cellController
+        return tableModel[indexPath.row]
     }
     
-    private func removeCellController(forRowAt indexPath: IndexPath) {
-        cellControllers[indexPath] = nil
+    private func caencelCellControllerLoad(forRowAt indexPath: IndexPath) {
+        cellController(forRowAt: indexPath).cancelLoad()
     }
 }

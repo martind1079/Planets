@@ -8,11 +8,11 @@
 import Foundation
 import CorePlanets
 
-public protocol MoviewDataLoaderTask {
+public protocol MovieDataLoaderTask {
     func cancel()
 }
 
 public protocol MovieDataLoader {
     typealias Result = Swift.Result<[Movie], Error>
-    func loadMovie(from path: String, completion: @escaping (Result) -> Void) -> MoviewDataLoaderTask
+    func loadMovie(from path: String, completion: @escaping (Result) -> Void) -> MovieDataLoaderTask
 }

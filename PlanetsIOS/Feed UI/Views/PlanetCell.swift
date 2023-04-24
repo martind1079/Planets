@@ -8,6 +8,17 @@
 import UIKit
 
 public final class PlanetCell: UITableViewCell {
+    
+    public var isLoading: Bool = false {
+        didSet {
+            if isLoading {
+                startLoading()
+            } else {
+                stopLoading()
+            }
+        }
+    }
+    
     public let nameLabel = UILabel()
     public let populationLabel = UILabel()
     public let activityIndicator = UIActivityIndicatorView()

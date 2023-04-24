@@ -9,39 +9,41 @@ import CorePlanets
 import UIKit
 
 final class PlanetCellController {
-    private var task: MoviewDataLoaderTask?
-    var model: Planet
-    var movieLoader: MovieDataLoader
+
+    private let viewModel: PlanetViewModel
     
-    init(model: Planet, movieLoader: MovieDataLoader) {
-        self.model  = model
-        self.movieLoader = movieLoader
+    init(viewModel: PlanetViewModel) {
+        self.viewModel = viewModel
     }
     
     func view() -> UITableViewCell {
-        let cell = PlanetCell()
-        cell.nameLabel.text = model.name
-        cell.populationLabel.text = model.population
-        cell.moviesLabel.text = ""
-        cell.startLoading()
+        let cell = binded(PlanetCell())
+        viewModel.loadMovies()
+        return cell
+    }
+    
+    private func binded(_ cell: PlanetCell) -> PlanetCell {
+
+        cell.nameLabel.text = viewModel.name
+        cell.populationLabel.text = viewModel.population
         
-        self.task = movieLoader.loadMovie(from: model.url) { [weak cell] result in
-            
-            if let movies = try? result.get() {
-                cell?.moviesLabel.text = movies.movieList()
-            }
-            cell?.stopLoading()
+        viewModel.onMovieLoad = { [weak cell] movies in
+            cell?.moviesLabel.text = movies.movieList()
+        }
+        
+        viewModel.onMovieLoadingStateChange = { [weak cell] isLoading in
+            cell?.isLoading = isLoading
         }
         
         return cell
     }
     
     func preload() {
-        task = movieLoader.loadMovie(from: model.url) { _ in }
+        viewModel.loadMovies()
     }
     
-    deinit {
-        task?.cancel()
+    func cancelLoad() {
+        viewModel.cancelMovieLoad()
     }
 }
 

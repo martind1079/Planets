@@ -6,35 +6,33 @@
 //
 
 import UIKit
-import CorePlanets
 
 final class FeedRefreshController: NSObject {
     
-    private(set) lazy var view: UIRefreshControl = {
-        let view = UIRefreshControl()
-        view.addTarget(self, action: #selector(refresh), for: .valueChanged)
-        return view
-    }()
+    private(set) lazy var view = binded(UIRefreshControl())
     
-    var onRefresh: (([Planet]) -> Void)?
+    private let viewModel: FeedViewModel
     
-    private let loader: PlanetsLoader
-    
-    init(loader: PlanetsLoader) {
-        self.loader = loader
+    init(viewModel: FeedViewModel) {
+        self.viewModel = viewModel
     }
     
     @objc func refresh() {
-        view.beginRefreshing()
-        loader.load { [weak self] result in
-            if let feed = try? result.get() {
-                self?.onRefresh?(feed)
-            }
-            
-            self?.view.endRefreshing()
-        }
+        viewModel.loadFeed()
     }
     
+    private func binded(_ view: UIRefreshControl) -> UIRefreshControl {
+        viewModel.onLoadingStateChange = { [weak view] isLoading in
+            
+            if isLoading {
+                view?.beginRefreshing()
+            } else {
+                view?.endRefreshing()
+            }
+        }
+        view.addTarget(self, action: #selector(refresh), for: .valueChanged)
+        return view
+    }
 }
 
 
