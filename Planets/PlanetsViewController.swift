@@ -53,7 +53,7 @@ class PlanetsViewController: UITableViewController {
 
 extension PlanetTableViewCell {
     func configure(with viewModel: PlanetViewModel) {
-        titleLabel.text = viewModel.name
-        detailLabel.text = "Population: \(viewModel.population)"
+        nameLabel.text = viewModel.name
+        populationLabel.text = "Population: \(viewModel.population)"
     }
 }

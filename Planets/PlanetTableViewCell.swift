@@ -9,8 +9,10 @@ import UIKit
 
 class PlanetTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var detailLabel: UILabel!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var populationLabel: UILabel!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var moviesLabel: UILabel!
     
     static var reuseIdentifier: String {
         "PlanetCell"
@@ -18,15 +20,16 @@ class PlanetTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        moviesLabel.alpha = 0
+        activityIndicator.startAnimating()
     }
     
-
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        moviesLabel.alpha = 0
+        activityIndicator.startAnimating()
     }
     
 }
