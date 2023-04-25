@@ -19,11 +19,6 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
-		<key>Planets.xcscheme_^#shared#^_</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>6</integer>
-		</dict>
 		<key>PlanetsAPIEndToEndTests.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
@@ -42,6 +37,16 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>82270E6229F80D8A005705CE</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>82270E7729F80D8C005705CE</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>826BFC9529F43FF600B943F0</key>
 		<dict>
 			<key>primary</key>

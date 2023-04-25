@@ -26,15 +26,19 @@ final class PlanetCellController {
     
     private func binded(_ cell: PlanetCell) -> PlanetCell {
         cell.nameLabel.text = viewModel.name
-        cell.populationLabel.text = viewModel.population
+        cell.populationLabel.text = "Population: \(viewModel.population)"
         
         viewModel.onMovieLoad = { [weak cell, weak self] movies in
             guard let self = self, !self.cancelLoading else { return }
-            cell?.moviesLabel.text = movies.movieList()
+            DispatchQueue.main.async {
+                cell?.moviesLabel.text = movies.movieList()
+            }
         }
         
         viewModel.onMovieLoadingStateChange = { [weak cell] isLoading in
-            cell?.isLoading = isLoading
+            DispatchQueue.main.async {
+                cell?.isLoading = isLoading
+            }
         }
         
         return cell

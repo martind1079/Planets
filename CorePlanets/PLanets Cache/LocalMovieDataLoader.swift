@@ -56,9 +56,9 @@ extension LocalMovieDataLoader: MovieDataLoader {
 		}
 	}
 	
-	public func loadMovies(from path: String, completion: @escaping (LoadResult) -> Void) -> MovieDataLoaderTask {
+	public func loadMovies(from paths: [String], completion: @escaping (LoadResult) -> Void) -> MovieDataLoaderTask {
 		let task = LoadMovieDataTask(completion)
-		store.retrieve(dataForURL: path) { [weak self] result in
+        store.retrieve(dataForURL: paths.first!) { [weak self] result in
 			guard self != nil else { return }
 			
             if case let movies = try? result.get() {

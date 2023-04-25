@@ -219,13 +219,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		82270E4229F6C426005705CE /* Movie Loader */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "Movie Loader";
-			sourceTree = "<group>";
-		};
 		82270E4529F6C469005705CE /* Feed UI */ = {
 			isa = PBXGroup;
 			children = (
@@ -292,7 +285,6 @@
 			isa = PBXGroup;
 			children = (
 				82270E4529F6C469005705CE /* Feed UI */,
-				82270E4229F6C426005705CE /* Movie Loader */,
 			);
 			path = PlanetsIOS;
 			sourceTree = "<group>";

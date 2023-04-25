@@ -8,10 +8,10 @@
 import Foundation
 
 public struct Movie: Decodable {
-    public var name: String
+    public var title: String
     
-    public init(name: String) {
-        self.name = name
+    public init(title: String) {
+        self.title = title
     }
 }
 
@@ -19,7 +19,7 @@ public extension Array where Element == Movie {
     func movieList() -> String {
         var results = [String]()
         self.forEach {
-            results.append($0.name)
+            results.append($0.title)
         }
         return results.joined(separator: ", ")
     }

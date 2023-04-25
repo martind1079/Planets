@@ -4,7 +4,7 @@
         <relationship name="items" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="ManagedPlanet" inverseName="cache" inverseEntity="ManagedPlanet"/>
     </entity>
     <entity name="ManagedFilm" representedClassName="ManagedFilm" syncable="YES" codeGenerationType="class">
-        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
         <relationship name="planet" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ManagedPlanet" inverseName="films" inverseEntity="ManagedPlanet"/>
     </entity>
     <entity name="ManagedPlanet" representedClassName="ManagedPlanet" syncable="YES">

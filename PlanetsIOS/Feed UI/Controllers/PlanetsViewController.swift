@@ -19,6 +19,8 @@ public class PlanetsViewController: UITableViewController, UITableViewDataSource
         
         refreshControl = refreshController?.view
         refreshController?.refresh()
+        tableView.separatorColor = .white
+        view.backgroundColor = UIColor(patternImage: UIImage(named: "stars")!)
     }
     
     convenience init(refreshController: FeedRefreshController) {

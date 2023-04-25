@@ -54,23 +54,23 @@ extension ManagedPlanet {
             managed.url = local.url
             
             managed.residents = NSOrderedSet(array: local.residents.map { ManagedResident.with(context: context, name: $0)})
-            managed.films = NSOrderedSet(array: local.films.map { ManagedFilm.with(context: context, name: $0)})
+            managed.films = NSOrderedSet(array: local.films.map { ManagedFilm.with(context: context, title: $0)})
             return managed
         })
     }
     
     var local: LocalPlanet {
         let residentNames: [String] = residents.compactMap { ($0 as? ManagedResident)?.name ?? nil }
-        let filmNames: [String] = films.compactMap { ($0 as? ManagedFilm)?.name ?? nil }
+        let filmNames: [String] = films.compactMap { ($0 as? ManagedFilm)?.title ?? nil }
         
         return LocalPlanet(name: name, rotationPeriod: rotationPeriod, orbitalPeriod: orbitalPeriod, diameter: diameter, climate: climate, gravity: gravity, terrain: terrain, surfaceWater: surfaceWater, population: population, residents: residentNames, films: filmNames, created: created, edited: edited, url: url)
     }
 }
 
 extension ManagedFilm {
-    static func with(context: NSManagedObjectContext, name: String) -> ManagedFilm {
+    static func with(context: NSManagedObjectContext, title: String) -> ManagedFilm {
         let managed = ManagedFilm(context: context)
-        managed.name = name
+        managed.title = title
         return managed
     }
 }

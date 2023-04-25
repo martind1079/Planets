@@ -25,7 +25,7 @@ final class PlanetViewModel {
         return model.name
     }
     
-    var population: String?  {
+    var population: String  {
         return model.population
     }
  
@@ -35,7 +35,7 @@ final class PlanetViewModel {
     
     func loadMovies() {
         onMovieLoadingStateChange?(true)
-        task = movieLoader.loadMovies(from: model.url) { [weak self] result in
+        task = movieLoader.loadMovies(from: model.films) { [weak self] result in
             self?.handle(result)
         }
     }
