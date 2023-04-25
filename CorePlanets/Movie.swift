@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct Movie {
+public struct Movie: Decodable {
     public var name: String
     
     public init(name: String) {

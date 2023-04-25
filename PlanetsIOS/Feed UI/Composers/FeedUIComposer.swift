@@ -6,7 +6,7 @@
 //
 
 import CorePlanets
-import Foundation
+import UIKit
 
 public final class FeedUIComoposer {
     private init() { }
@@ -14,7 +14,14 @@ public final class FeedUIComoposer {
     public static func feedComposedWith(loader: PlanetsLoader, movieLoader: MovieDataLoader) -> PlanetsViewController {
         let viewModel = FeedViewModel(loader: loader)
         let refreshController = FeedRefreshController(viewModel: viewModel)
-        let planetsController = PlanetsViewController(refreshController: refreshController)
+        
+        let bundle = Bundle(for: PlanetsViewController.self)
+        let storyboard = UIStoryboard(name: "Feed", bundle: bundle)
+        
+        let planetsController = storyboard.instantiateInitialViewController() as! PlanetsViewController
+        planetsController.refreshController = refreshController
+        
+        
         viewModel.onFeedLoad = adaptFeedToCellControllers(formwardingTo: planetsController, movieLoader: movieLoader)
         
         return planetsController

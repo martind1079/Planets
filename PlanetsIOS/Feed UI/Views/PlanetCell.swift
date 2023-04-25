@@ -19,10 +19,11 @@ public final class PlanetCell: UITableViewCell {
         }
     }
     
-    public let nameLabel = UILabel()
-    public let populationLabel = UILabel()
-    public let activityIndicator = UIActivityIndicatorView()
-    public let moviesLabel = UILabel()
+    @IBOutlet private(set) public var nameLabel: UILabel!
+    @IBOutlet private(set) public var populationLabel: UILabel!
+    @IBOutlet private(set) public var moviesLabel: UILabel!
+    @IBOutlet private(set) public var activityIndicator: UIActivityIndicatorView!
+
     
     public func startLoading() {
         activityIndicator.isHidden = false

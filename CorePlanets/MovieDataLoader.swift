@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import CorePlanets
 
 public protocol MovieDataLoaderTask {
     func cancel()
@@ -14,5 +13,5 @@ public protocol MovieDataLoaderTask {
 
 public protocol MovieDataLoader {
     typealias Result = Swift.Result<[Movie], Error>
-    func loadMovie(from path: String, completion: @escaping (Result) -> Void) -> MovieDataLoaderTask
+    func loadMovies(from path: String, completion: @escaping (Result) -> Void) -> MovieDataLoaderTask
 }

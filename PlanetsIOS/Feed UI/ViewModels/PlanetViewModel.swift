@@ -35,7 +35,7 @@ final class PlanetViewModel {
     
     func loadMovies() {
         onMovieLoadingStateChange?(true)
-        task = movieLoader.loadMovie(from: model.url) { [weak self] result in
+        task = movieLoader.loadMovies(from: model.url) { [weak self] result in
             self?.handle(result)
         }
     }

@@ -27,6 +27,16 @@ public class ManagedPlanet: NSManagedObject {
 }
 
 extension ManagedPlanet {
+    
+    static func first(with url: String, in context: NSManagedObjectContext) throws -> ManagedPlanet? {
+        let request = NSFetchRequest<ManagedPlanet>(entityName: entity().name!)
+        request.predicate = NSPredicate(format: "%K = %@", argumentArray: [#keyPath(ManagedPlanet.url), url])
+        request.returnsObjectsAsFaults = false
+        request.fetchLimit = 1
+        return try context.fetch(request).first
+    }
+    
+    
     internal static func items(from localFeed: [LocalPlanet], in context: NSManagedObjectContext) -> NSOrderedSet {
         return NSOrderedSet(array: localFeed.map { local in
             let managed = ManagedPlanet(context: context)
@@ -49,7 +59,7 @@ extension ManagedPlanet {
         })
     }
     
-    internal var local: LocalPlanet {
+    var local: LocalPlanet {
         let residentNames: [String] = residents.compactMap { ($0 as? ManagedResident)?.name ?? nil }
         let filmNames: [String] = films.compactMap { ($0 as? ManagedFilm)?.name ?? nil }
         

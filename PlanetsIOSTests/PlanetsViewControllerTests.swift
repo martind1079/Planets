@@ -200,6 +200,20 @@ final class PlanetsViewControllerTests: XCTestCase {
         
         XCTAssertEqual(loader.cancelledImagePaths, [planet0.url, planet1.url], "expected cancellations when planet1 is no longer visible")
     }
+    
+    func test_planetCell_doesNotDisplayMoviesWhenNotVisibleAnymore() {
+        let (sut, loader) = makeSUT()
+        let planet = makePlanet(name: "any name", population: "10000", url: "https://url")
+        sut.loadViewIfNeeded()
+        loader.completeFeedLoading(with: [planet])
+        
+        let view = sut.simulatePlanetViewNotVisible(at: 0)
+        let movies = [Movie(name: "Star Wars"), Movie(name: "Star Trek")]
+        loader.completeMovieLoading(with: movies)
+        
+        XCTAssertNil(view?.displayedMovies)
+        
+    }
 
     // MARK: - Helpers
     
@@ -289,7 +303,7 @@ final class PlanetsViewControllerTests: XCTestCase {
             cancelledImagePaths.append(path)
         }
         
-        func loadMovie(from path: String, completion: @escaping (MovieDataLoader.Result) -> Void) -> MovieDataLoaderTask {
+        func loadMovies(from path: String, completion: @escaping (MovieDataLoader.Result) -> Void) -> MovieDataLoaderTask {
             movieRequests.append((path, completion))
             return TaskSpy { [weak self] in self?.cancelledImagePaths.append(path) }
         }
@@ -324,12 +338,15 @@ private extension PlanetsViewController {
         ds?.tableView?(tableView, cancelPrefetchingForRowsAt: [indexPath])
     }
     
-    func simulatePlanetViewNotVisible(at index: Int = 0) {
+    @discardableResult
+    func simulatePlanetViewNotVisible(at index: Int = 0) -> PlanetCell? {
         let view = simulatePlanetViewVisible(at: index)
         
         let delegate = tableView.delegate
         let indexPath = IndexPath(row: index, section: planetsSection)
         delegate?.tableView?(tableView, didEndDisplaying: view!, forRowAt: indexPath)
+        
+        return view
     }
     
     func numberOfRenderedPlanets() -> Int {

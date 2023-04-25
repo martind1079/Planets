@@ -11,23 +11,25 @@ import UIKit
 final class PlanetCellController {
 
     private let viewModel: PlanetViewModel
+    var cancelLoading = false
     
     init(viewModel: PlanetViewModel) {
         self.viewModel = viewModel
     }
     
-    func view() -> UITableViewCell {
-        let cell = binded(PlanetCell())
+    func view(in tableView: UITableView) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "PlanetCell") as! PlanetCell
+        let planetCell = binded(cell)
         viewModel.loadMovies()
-        return cell
+        return planetCell
     }
     
     private func binded(_ cell: PlanetCell) -> PlanetCell {
-
         cell.nameLabel.text = viewModel.name
         cell.populationLabel.text = viewModel.population
         
-        viewModel.onMovieLoad = { [weak cell] movies in
+        viewModel.onMovieLoad = { [weak cell, weak self] movies in
+            guard let self = self, !self.cancelLoading else { return }
             cell?.moviesLabel.text = movies.movieList()
         }
         
@@ -43,6 +45,7 @@ final class PlanetCellController {
     }
     
     func cancelLoad() {
+        cancelLoading = true
         viewModel.cancelMovieLoad()
     }
 }

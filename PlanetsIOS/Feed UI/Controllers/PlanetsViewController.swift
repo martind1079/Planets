@@ -9,7 +9,7 @@ import UIKit
 
 public class PlanetsViewController: UITableViewController, UITableViewDataSourcePrefetching {
     
-    private var refreshController: FeedRefreshController?
+    var refreshController: FeedRefreshController?
     var tableModel = [PlanetCellController]() {
         didSet { tableView.reloadData() }
     }
@@ -18,7 +18,6 @@ public class PlanetsViewController: UITableViewController, UITableViewDataSource
         super.viewDidLoad()
         
         refreshControl = refreshController?.view
-        tableView.prefetchDataSource = self
         refreshController?.refresh()
     }
     
@@ -32,7 +31,7 @@ public class PlanetsViewController: UITableViewController, UITableViewDataSource
     }
     
     public override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return cellController(forRowAt: indexPath).view()
+        return cellController(forRowAt: indexPath).view(in: tableView)
     }
     
     public func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
