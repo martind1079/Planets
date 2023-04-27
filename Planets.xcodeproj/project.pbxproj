@@ -67,6 +67,7 @@
 		82EF16BB29FAF094007034C2 /* PlanetsViewControllerTests+Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82EF16BA29FAF094007034C2 /* PlanetsViewControllerTests+Localization.swift */; };
 		82EF16BC29FAF132007034C2 /* Planet.strings in Resources */ = {isa = PBXBuildFile; fileRef = 82EF16BE29FAF132007034C2 /* Planet.strings */; };
 		82EF16C229FAF1EF007034C2 /* PlanetsLocalizationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82EF16C129FAF1EF007034C2 /* PlanetsLocalizationTests.swift */; };
+		82EF16C429FB17A9007034C2 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82EF16C329FB17A9007034C2 /* Strings.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -179,6 +180,7 @@
 		82EF16BD29FAF132007034C2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Planet.strings; sourceTree = "<group>"; };
 		82EF16BF29FAF178007034C2 /* fr-CA */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "fr-CA"; path = "fr-CA.lproj/Planet.strings"; sourceTree = "<group>"; };
 		82EF16C129FAF1EF007034C2 /* PlanetsLocalizationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetsLocalizationTests.swift; sourceTree = "<group>"; };
+		82EF16C329FB17A9007034C2 /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -273,6 +275,7 @@
 		82270E4F29F6E523005705CE /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				82EF16C329FB17A9007034C2 /* Strings.swift */,
 				82038D1629F9223500FFE597 /* PlanetsPresenter.swift */,
 				82038D1829F9243B00FFE597 /* FeedPresenter.swift */,
 				82EF16BE29FAF132007034C2 /* Planet.strings */,
@@ -737,6 +740,7 @@
 			files = (
 				82038D1729F9223500FFE597 /* PlanetsPresenter.swift in Sources */,
 				82270E4B29F6CEC4005705CE /* PlanetCellController.swift in Sources */,
+				82EF16C429FB17A9007034C2 /* Strings.swift in Sources */,
 				82038D1929F9243B00FFE597 /* FeedPresenter.swift in Sources */,
 				82270E4E29F6D91C005705CE /* FeedUIComposer.swift in Sources */,
 				8270CDCA29F68BB9009AE1F4 /* PlanetsViewController.swift in Sources */,

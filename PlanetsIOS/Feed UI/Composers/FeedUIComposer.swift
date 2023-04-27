@@ -12,20 +12,57 @@ public final class FeedUIComoposer {
     private init() { }
     
     public static func feedComposedWith(loader: PlanetsLoader, movieLoader: MovieDataLoader) -> PlanetsViewController {
-        let presentationAdapter = PlanetsLoaderPresentationAdapter(loader: loader)
+        let presentationAdapter = PlanetsLoaderPresentationAdapter(loader: MainQueueDispatchDecorator(loader))
         let refreshController = FeedRefreshController(delegate: presentationAdapter)
         
         
         let planetsController = PlanetsViewController.makeWith(refreshController: refreshController, title: FeedPresenter.title)
         
         presentationAdapter.presenter = FeedPresenter(
-            feedView: FeedViewAdapter(controller: planetsController, movieLoader: movieLoader),
+            feedView: FeedViewAdapter(controller: planetsController, movieLoader: MainQueueDispatchDecorator(movieLoader)),
             loadingView: WeakRefVirtualProxy(refreshController))
         
                 
         return planetsController
     }
     
+}
+
+private final class MainQueueDispatchDecorator<T> {
+    private let decoratee: T
+    
+    init(_ decoratee: T) {
+        self.decoratee = decoratee
+    }
+}
+
+extension MainQueueDispatchDecorator: PlanetsLoader where T == PlanetsLoader {
+    func load(completion: @escaping (PlanetsLoader.Result) -> Void) {
+        decoratee.load { result in
+            if Thread.isMainThread {
+                completion(result)
+            } else {
+                DispatchQueue.main.async {
+                    completion(result)
+                }
+            }
+        }
+    }
+}
+
+extension MainQueueDispatchDecorator: MovieDataLoader where T == MovieDataLoader {
+    
+    func loadMovies(from paths: [String], forURL url: String, completion: @escaping (MovieDataLoader.Result) -> Void) -> MovieDataLoaderTask {
+        decoratee.loadMovies(from: paths, forURL: url) { result in
+            if Thread.isMainThread {
+                completion(result)
+            } else {
+                DispatchQueue.main.async {
+                    completion(result)
+                }
+            }
+        }
+    }
 }
 
 private extension PlanetsViewController {
@@ -104,9 +141,7 @@ private final class MovieLoaderPresentationAdapter: PlanetCellControllerDelegate
         presenter?.didStartLoadingMovies(for: model)
         let paths = model.films.map { $0.url }
         task = movieLoader.loadMovies(from: paths, forURL: model.url) { [weak self] result in
-         //   DispatchQueue.main.async {
-                self?.handle(result)
-           // }
+            self?.handle(result)
         }
     }
     

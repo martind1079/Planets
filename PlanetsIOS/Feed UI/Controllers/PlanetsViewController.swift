@@ -12,9 +12,7 @@ public class PlanetsViewController: UITableViewController, UITableViewDataSource
     var refreshController: FeedRefreshController?
     var tableModel = [PlanetCellController]() {
         didSet {
-         //   DispatchQueue.main.async {
-                self.tableView.reloadData()
-          //  }
+            self.tableView.reloadData()
         }
     }
         
@@ -25,8 +23,7 @@ public class PlanetsViewController: UITableViewController, UITableViewDataSource
         refreshController?.refresh()
         tableView.separatorColor = .white
         
-        let image = UIImage(named: "stars", in: Bundle(for: type(of: self)), compatibleWith: nil)!
-        view.backgroundColor = UIColor(patternImage: image)
+        view.backgroundColor = UIColor(patternImage: UIImage.Planet.backgroundImage)
         
     }
     

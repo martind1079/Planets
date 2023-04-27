@@ -14,13 +14,11 @@ protocol PlanetsRefreshControllerDelegate {
 final class FeedRefreshController: NSObject, FeedLoadingView {
     
     func display(_ viewModel: FeedLoadingViewModel) {
-      //  DispatchQueue.main.async {
-            if viewModel.isLoading {
-                self.view.beginRefreshing()
-            } else {
-                self.view.endRefreshing()
-            }
-       // }
+        if viewModel.isLoading {
+            view.beginRefreshing()
+        } else {
+            view.endRefreshing()
+        }
     }
     
     private(set) lazy var view = loadView()
@@ -37,7 +35,8 @@ final class FeedRefreshController: NSObject, FeedLoadingView {
     
     private func loadView() -> UIRefreshControl {
         let view = UIRefreshControl()
-        view.backgroundColor = .white
+        view.tintColor = .white
+       // view.backgroundColor = .clear
         view.addTarget(self, action: #selector(refresh), for: .valueChanged)
         return view
     }

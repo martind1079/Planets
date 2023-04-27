@@ -30,12 +30,10 @@ final class PlanetCellController: PlanetView {
     }
     
     func display(_ viewModel: PlanetViewModel) {
-       // DispatchQueue.main.async {
-            self.cell?.nameLabel.text = viewModel.name
-            self.cell?.populationLabel.text = "Population: \(viewModel.population)"
-            self.cell?.moviesLabel.text = viewModel.movies.movieList()
-            self.cell?.stopLoading()
-      //  }
+        cell?.nameLabel.text = viewModel.name
+        cell?.populationLabel.text = "Population: \(viewModel.population)"
+        cell?.moviesLabel.text = viewModel.movies.movieList()
+        cell?.stopLoading()
     }
     
     

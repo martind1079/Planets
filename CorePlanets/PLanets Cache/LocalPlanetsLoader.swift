@@ -36,9 +36,7 @@ public final class LocalPlanetsLoader: PlanetsLoader, PlanetCache {
                 switch result {
                 case let .failure(error):
                     self?.store.deleteCachedPlanets { _ in }
-                    DispatchQueue.main.async {
-                        completion(.failure(error))
-                    }
+                    completion(.failure(error))
                 case let .success(.some(planets)):
                     completion(.success(planets.toModels()))
                     

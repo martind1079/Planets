@@ -58,8 +58,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     
     func setNavigationBarAppeareance() {
+        
         let appearance = UINavigationBarAppearance()
-        appearance.configureWithTransparentBackground()
+        appearance.configureWithOpaqueBackground()
         appearance.titleTextAttributes = [.foregroundColor: UIColor.white]
         UINavigationBar.appearance().standardAppearance = appearance
     }
