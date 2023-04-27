@@ -7,6 +7,7 @@
 
 import UIKit
 
+import CoreData
 import CorePlanets
 import PlanetsIOS
 
@@ -14,53 +15,53 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
 
-
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
-        // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
-        // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
+
         guard let _ = (scene as? UIWindowScene) else { return }
         
         let url = URL(string: "https://swapi.dev/api/planets/")!
         let session = URLSession(configuration: .ephemeral)
-        let client = URLSessionHTTPClient(session: session)
-        let planetsLoader = RemotePlanetsLoader(url: url, client: client)
-        let movieLoader = RemoteMovieLoader(client: client)
         
-        let planetsViewController = FeedUIComoposer.feedComposedWith(loader: planetsLoader, movieLoader: movieLoader)
+        let remoteClient = URLSessionHTTPClient(session: session)
+        let remotePlanetsLoader = RemotePlanetsLoader(url: url, client: remoteClient)
+        let remoteMovieLoader = RemoteMovieLoader(client: remoteClient)
         
-        window?.rootViewController = planetsViewController
+        let localStoreURL = NSPersistentContainer
+            .defaultDirectoryURL()
+            .appending(component: "planet-store.sqlite")
+        
+        let localStore = try! CoreDataPlanetsStore(storeURL: localStoreURL, bundle: Bundle(for: ManagedCache.self))
+        let localPlanetsLoader = LocalPlanetsLoader(store: localStore)
+        let localMovieLoader = LocalMovieDataLoader(store: localStore)
+        
+        let compositePlanetsLoader = PlanetLoaderWithFallbackComposite(
+            primaryLoader:
+                PlanetLoaderCacheDecorator(
+                    decoratee: remotePlanetsLoader,
+                    cache: localPlanetsLoader),
+            fallbackLoader: localPlanetsLoader)
+        
+        let compositeMovieDataLoader = MovieDataLoaderWithFallbackComposite(
+            primaryLoader: localMovieLoader,
+            fallbackLoader: MovieDataLoaderCacheDecorator (
+                decoratee: remoteMovieLoader,
+                cache: localMovieLoader))
+        
+        let planetsViewController = FeedUIComoposer.feedComposedWith(loader: compositePlanetsLoader, movieLoader: compositeMovieDataLoader)
+        
+        let navigationController = UINavigationController()
+        navigationController.viewControllers = [planetsViewController]
+        setNavigationBarAppeareance()
+        
+        window?.rootViewController = navigationController
         
     }
-
-    func sceneDidDisconnect(_ scene: UIScene) {
-        // Called as the scene is being released by the system.
-        // This occurs shortly after the scene enters the background, or when its session is discarded.
-        // Release any resources associated with this scene that can be re-created the next time the scene connects.
-        // The scene may re-connect later, as its session was not necessarily discarded (see `application:didDiscardSceneSessions` instead).
+    
+    func setNavigationBarAppeareance() {
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithTransparentBackground()
+        appearance.titleTextAttributes = [.foregroundColor: UIColor.white]
+        UINavigationBar.appearance().standardAppearance = appearance
     }
-
-    func sceneDidBecomeActive(_ scene: UIScene) {
-        // Called when the scene has moved from an inactive state to an active state.
-        // Use this method to restart any tasks that were paused (or not yet started) when the scene was inactive.
-    }
-
-    func sceneWillResignActive(_ scene: UIScene) {
-        // Called when the scene will move from an active state to an inactive state.
-        // This may occur due to temporary interruptions (ex. an incoming phone call).
-    }
-
-    func sceneWillEnterForeground(_ scene: UIScene) {
-        // Called as the scene transitions from the background to the foreground.
-        // Use this method to undo the changes made on entering the background.
-    }
-
-    func sceneDidEnterBackground(_ scene: UIScene) {
-        // Called as the scene transitions from the foreground to the background.
-        // Use this method to save data, release shared resources, and store enough scene-specific state information
-        // to restore the scene back to its current state.
-    }
-
-
 }
 

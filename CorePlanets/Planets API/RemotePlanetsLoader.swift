@@ -18,14 +18,14 @@ public final class RemotePlanetsLoader: PlanetsLoader {
 		client.get(from: url) { [weak self] result in
 			guard self != nil else { return }
 			
-            DispatchQueue.main.async {
+         //   DispatchQueue.main.async {
                 switch result {
                 case let .success((data, response)):
                     completion(PlanetsMapper.map(data, from: response))
                 case .failure:
                     completion(.failure(Error.connectivity))
                 }
-            }
+         //   }
 		}
 	}
 }

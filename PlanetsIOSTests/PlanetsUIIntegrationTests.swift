@@ -10,7 +10,14 @@ import UIKit
 import CorePlanets
 import PlanetsIOS
 
-final class PlanetsViewControllerTests: XCTestCase {
+final class PlanetsUIIntegrationTests: XCTestCase {
+    
+    func test_feedViewHasTitle() {
+         let (sut, _) = makeSUT()
+        sut.loadViewIfNeeded()
+        
+        XCTAssertEqual(sut.title, localized("PLANETS_VIEW_TITLE"))
+    }
 
     func test_loadFeedActions_requestFeedFromLoader() {
         let (sut, loader) = makeSUT()
@@ -85,10 +92,10 @@ final class PlanetsViewControllerTests: XCTestCase {
         XCTAssertEqual(loader.loadedMoviePaths, [], "expected no movies requested until planets became visible")
         
         sut.simulatePlanetViewVisible(at: 0)
-        XCTAssertEqual(loader.loadedMoviePaths, [planet0.url])
+        XCTAssertEqual(loader.loadedMoviePaths, [planet0.films.map { $0.url }])
         
         sut.simulatePlanetViewVisible(at: 1)
-        XCTAssertEqual(loader.loadedMoviePaths, [planet0.url, planet1.url])
+        XCTAssertEqual(loader.loadedMoviePaths, [planet0.films.map { $0.url }, planet1.films.map { $0.url }])
         
     }
     
@@ -103,11 +110,11 @@ final class PlanetsViewControllerTests: XCTestCase {
         XCTAssertEqual(loader.cancelledImagePaths, [], "expected no cancellations until planets are no longer visible")
         sut.simulatePlanetViewNotVisible(at: 0)
         
-        XCTAssertEqual(loader.cancelledImagePaths, [planet0.url], "expected cancellation when planet0 is no longer visible")
+        XCTAssertEqual(loader.cancelledImagePaths, [planet0.films.map { $0.url }], "expected cancellation when planet0 is no longer visible")
         
         sut.simulatePlanetViewNotVisible(at: 1)
         
-        XCTAssertEqual(loader.cancelledImagePaths, [planet0.url, planet1.url], "expected cancellations when planet1 is no longer visible")
+        XCTAssertEqual(loader.cancelledImagePaths, [planet0.films.map { $0.url }, planet1.films.map { $0.url }], "expected cancellations when planet1 is no longer visible")
         
     }
     
@@ -152,13 +159,13 @@ final class PlanetsViewControllerTests: XCTestCase {
         XCTAssertEqual(view0?.displayedMovies, .none, "expected no displayed movies before loading completions")
         XCTAssertEqual(view1?.displayedMovies, .none, "expected no displayed movies before loading completions")
         
-        let movies = [Movie(name: "Star Wars"), Movie(name: "Star Trek")]
+        let movies = [Movie(title: "Star Wars", url: "", openingCrawl: ""), Movie(title: "Star Trek", url: "", openingCrawl: "")]
         loader.completeMovieLoading(with: movies, at: 0)
         
         XCTAssertEqual(view0?.displayedMovies, movies.movieList(), "expected displayed movies after successfull loading completion")
         XCTAssertEqual(view1?.displayedMovies, .none, "expected no displayed movies before loading completions")
         
-        let movies1 = [Movie(name: "Avengers"), Movie(name: "SpiderMan")]
+        let movies1 = [Movie(title: "Avengers", url: "", openingCrawl: ""), Movie(title: "Spiderman", url: "", openingCrawl: "")]
         loader.completeMovieLoading(with: movies1, at: 1)
         
         XCTAssertEqual(view0?.displayedMovies, movies.movieList(), "expected displayed movies after successfull loading completion")
@@ -176,10 +183,10 @@ final class PlanetsViewControllerTests: XCTestCase {
         XCTAssertEqual(loader.loadedMoviePaths, [])
         
         sut.simulatePlanetViewNearlyVisble(at: 0)
-        XCTAssertEqual(loader.loadedMoviePaths, [planet0.url], "Expected load request when cell nearly visible")
+        XCTAssertEqual(loader.loadedMoviePaths, [planet0.films.map { $0.url }], "Expected load request when cell nearly visible")
         
         sut.simulatePlanetViewNearlyVisble(at: 1)
-        XCTAssertEqual(loader.loadedMoviePaths, [planet0.url, planet1.url], "Expected load request when cell nearly visible")
+        XCTAssertEqual(loader.loadedMoviePaths, [planet0.films.map { $0.url }, planet1.films.map { $0.url }], "Expected load request when cell nearly visible")
         
     }
     
@@ -194,11 +201,11 @@ final class PlanetsViewControllerTests: XCTestCase {
         XCTAssertEqual(loader.cancelledImagePaths, [], "expected no cancellations until planets are no longer visible")
         sut.simulatePlanetViewNotNearVisble(at: 0)
         
-        XCTAssertEqual(loader.cancelledImagePaths, [planet0.url], "expected cancellation when planet0 is no longer visible")
+        XCTAssertEqual(loader.cancelledImagePaths, [planet0.films.map { $0.url }], "expected cancellation when planet0 is no longer visible")
         
         sut.simulatePlanetViewNotNearVisble(at: 1)
         
-        XCTAssertEqual(loader.cancelledImagePaths, [planet0.url, planet1.url], "expected cancellations when planet1 is no longer visible")
+        XCTAssertEqual(loader.cancelledImagePaths, [planet0.films.map { $0.url }, planet1.films.map { $0.url }], "expected cancellations when planet1 is no longer visible")
     }
     
     func test_planetCell_doesNotDisplayMoviesWhenNotVisibleAnymore() {
@@ -208,7 +215,7 @@ final class PlanetsViewControllerTests: XCTestCase {
         loader.completeFeedLoading(with: [planet])
         
         let view = sut.simulatePlanetViewNotVisible(at: 0)
-        let movies = [Movie(name: "Star Wars"), Movie(name: "Star Trek")]
+        let movies = [Movie(title: "Star Wars", url: "", openingCrawl: ""), Movie(title: "Star Trek", url: "", openingCrawl: "")]
         loader.completeMovieLoading(with: movies)
         
         XCTAssertNil(view?.displayedMovies)
@@ -230,8 +237,8 @@ final class PlanetsViewControllerTests: XCTestCase {
             return XCTFail("Expected \(feed.count) images, got \(sut.numberOfRenderedPlanets()) instead.", file: file, line: line)
         }
         
-        feed.enumerated().forEach { index, image in
-            assertThat(sut, hasViewConfiguredFor: image, at: index, file: file, line: line)
+        feed.enumerated().forEach { index, planet in
+            assertThat(sut, hasViewConfiguredFor: planet, at: index, file: file, line: line)
         }
     }
     
@@ -245,11 +252,11 @@ final class PlanetsViewControllerTests: XCTestCase {
         
         XCTAssertEqual(cell.nameText, planet.name, "Expected name text to be \(String(describing: planet.name)) for planet  view at index (\(index))", file: file, line: line)
         
-        XCTAssertEqual(cell.populationText, planet.population, "Expected description text to be \(String(describing: planet.population)) for image view at index (\(index)", file: file, line: line)
+        XCTAssertEqual(cell.populationText, "Population: \(planet.population)", "Expected description text to be \(String(describing: planet.population)) for image view at index (\(index)", file: file, line: line)
     }
     
-    private func makePlanet(name: String, population: String, url: String = "http://anuURL") -> Planet {
-        Planet(name: name, rotationPeriod: "", orbitalPeriod: "", diameter: "", climate: "", gravity: "", terrain: "", surfaceWater: "", population: population, residents: [], films: [], created: "", edited: "", url: url)
+    private func makePlanet(name: String, population: String, url: String = "http://anuURL", films: [String] = []) -> Planet {
+        Planet(name: name, rotationPeriod: "", orbitalPeriod: "", diameter: "", climate: "", gravity: "", terrain: "", surfaceWater: "", population: population, residents: [], films: films.map { Movie(title: "", url: $0, openingCrawl: "") }, created: "", edited: "", url: url)
     }
 
     class LoaderSpy: PlanetsLoader, MovieDataLoader {
@@ -281,16 +288,16 @@ final class PlanetsViewControllerTests: XCTestCase {
             }
         }
         
-        var loadedMoviePaths: [String] {
+        var loadedMoviePaths: [[String]] {
             movieRequests.map {
-                $0.path
+                $0.paths
             }
         }
-        var cancelledImagePaths = [String]()
+        var cancelledImagePaths = [[String]]()
         
-        private var movieRequests = [(path: String, completion: (MovieDataLoader.Result) -> Void)]()
+        private var movieRequests = [(paths: [String], completion: (MovieDataLoader.Result) -> Void)]()
         
-        func completeMovieLoading(with movies: [Movie] = [Movie(name: "A name")], at index: Int = 0) {
+        func completeMovieLoading(with movies: [Movie] = [Movie(title: "Any title", url: "Any URL", openingCrawl: "")], at index: Int = 0) {
             movieRequests[index].completion(.success(movies))
         }
         
@@ -299,13 +306,13 @@ final class PlanetsViewControllerTests: XCTestCase {
             movieRequests[index].completion(.failure(error))
         }
         
-        func cancelMovieLoad(from path: String) {
-            cancelledImagePaths.append(path)
+        func cancelMovieLoad(from paths: [String]) {
+            cancelledImagePaths.append(paths)
         }
         
-        func loadMovies(from path: String, completion: @escaping (MovieDataLoader.Result) -> Void) -> MovieDataLoaderTask {
-            movieRequests.append((path, completion))
-            return TaskSpy { [weak self] in self?.cancelledImagePaths.append(path) }
+        func loadMovies(from paths: [String], forURL: String, completion: @escaping (MovieDataLoader.Result) -> Void) -> MovieDataLoaderTask {
+            movieRequests.append((paths, completion))
+            return TaskSpy { [weak self] in self?.cancelledImagePaths.append(paths) }
         }
         
     }

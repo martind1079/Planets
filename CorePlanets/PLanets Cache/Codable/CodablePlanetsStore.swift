@@ -25,10 +25,47 @@ public class CodablePlanetsStore: PlanetsStore {
         let surfaceWater: String
         let population: String
         let residents: [String]
-        let films: [String]
+        let films: [Movie]
         let created: String
         let edited: String
         let url: String
+        
+        enum CodingKeys: CodingKey {
+            case name
+            case rotationPeriod
+            case orbitalPeriod
+            case diameter
+            case climate
+            case gravity
+            case terrain
+            case surfaceWater
+            case population
+            case residents
+            case films
+            case created
+            case edited
+            case url
+        }
+        
+        init(from decoder: Decoder) throws {
+            let container: KeyedDecodingContainer<CodablePlanetsStore.CodablePlanet.CodingKeys> = try decoder.container(keyedBy: CodablePlanetsStore.CodablePlanet.CodingKeys.self)
+            self.name = try container.decode(String.self, forKey: CodablePlanetsStore.CodablePlanet.CodingKeys.name)
+            self.rotationPeriod = try container.decode(String.self, forKey: CodablePlanetsStore.CodablePlanet.CodingKeys.rotationPeriod)
+            self.orbitalPeriod = try container.decode(String.self, forKey: CodablePlanetsStore.CodablePlanet.CodingKeys.orbitalPeriod)
+            self.diameter = try container.decode(String.self, forKey: CodablePlanetsStore.CodablePlanet.CodingKeys.diameter)
+            self.climate = try container.decode(String.self, forKey: CodablePlanetsStore.CodablePlanet.CodingKeys.climate)
+            self.gravity = try container.decode(String.self, forKey: CodablePlanetsStore.CodablePlanet.CodingKeys.gravity)
+            self.terrain = try container.decode(String.self, forKey: CodablePlanetsStore.CodablePlanet.CodingKeys.terrain)
+            self.surfaceWater = try container.decode(String.self, forKey: CodablePlanetsStore.CodablePlanet.CodingKeys.surfaceWater)
+            self.population = try container.decode(String.self, forKey: CodablePlanetsStore.CodablePlanet.CodingKeys.population)
+            self.residents = try container.decode([String].self, forKey: CodablePlanetsStore.CodablePlanet.CodingKeys.residents)
+            let filmURLS = try container.decode([String].self, forKey: CodablePlanetsStore.CodablePlanet.CodingKeys.films)
+            self.created = try container.decode(String.self, forKey: CodablePlanetsStore.CodablePlanet.CodingKeys.created)
+            self.edited = try container.decode(String.self, forKey: CodablePlanetsStore.CodablePlanet.CodingKeys.edited)
+            self.url = try container.decode(String.self, forKey: CodablePlanetsStore.CodablePlanet.CodingKeys.url)
+            
+            self.films = filmURLS.map { Movie(title: "", url: $0, openingCrawl: "")}
+        }
         
         init(_ planet: LocalPlanet) {
             name = planet.name

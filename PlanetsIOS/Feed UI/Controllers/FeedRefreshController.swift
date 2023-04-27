@@ -7,29 +7,37 @@
 
 import UIKit
 
-final class FeedRefreshController: NSObject {
+protocol PlanetsRefreshControllerDelegate {
+    func didRequestPlanetsRefresh()
+}
+
+final class FeedRefreshController: NSObject, FeedLoadingView {
     
-    private(set) lazy var view = binded(UIRefreshControl())
+    func display(_ viewModel: FeedLoadingViewModel) {
+      //  DispatchQueue.main.async {
+            if viewModel.isLoading {
+                self.view.beginRefreshing()
+            } else {
+                self.view.endRefreshing()
+            }
+       // }
+    }
     
-    private let viewModel: FeedViewModel
+    private(set) lazy var view = loadView()
     
-    init(viewModel: FeedViewModel) {
-        self.viewModel = viewModel
+    private var delegate: PlanetsRefreshControllerDelegate
+    
+    init(delegate: PlanetsRefreshControllerDelegate) {
+        self.delegate = delegate
     }
     
     @objc func refresh() {
-        viewModel.loadFeed()
+        delegate.didRequestPlanetsRefresh()
     }
     
-    private func binded(_ view: UIRefreshControl) -> UIRefreshControl {
-        viewModel.onLoadingStateChange = { [weak view] isLoading in
-            
-            if isLoading {
-                view?.beginRefreshing()
-            } else {
-                view?.endRefreshing()
-            }
-        }
+    private func loadView() -> UIRefreshControl {
+        let view = UIRefreshControl()
+        view.backgroundColor = .white
         view.addTarget(self, action: #selector(refresh), for: .valueChanged)
         return view
     }

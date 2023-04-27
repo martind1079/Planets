@@ -16,7 +16,7 @@ extension CoreDataPlanetsStore: MovieDataStore {
                 try ManagedPlanet.first(with: url, in: context)
                     .map { managedPlanet in
                         managedPlanet.films = NSOrderedSet(array: movies.map {
-                            ManagedFilm.with(context: context, title: $0.title)
+                            ManagedFilm.with(context: context, movie: $0)
                         })
                     }
                     .map(context.save)
@@ -33,9 +33,15 @@ extension CoreDataPlanetsStore: MovieDataStore {
             }
             completion(.success(
                 planet.films.map {
-                    Movie(title:  ($0 as! ManagedFilm).title ?? "")
+                    Movie.from(managed:  ($0 as! ManagedFilm))
                 }
             ))
 		}
 	}
+}
+
+extension Movie {
+    static func from(managed: ManagedFilm) -> Movie {
+        Movie(title: managed.title!, url: managed.path!, openingCrawl: managed.descriptor!)
+    }
 }

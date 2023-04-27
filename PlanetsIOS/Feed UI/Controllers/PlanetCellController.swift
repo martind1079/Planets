@@ -8,49 +8,55 @@
 import CorePlanets
 import UIKit
 
-final class PlanetCellController {
+protocol PlanetCellControllerDelegate {
+    func didRequestMovie()
+    func didCancelRequest()
+}
 
-    private let viewModel: PlanetViewModel
-    var cancelLoading = false
+final class PlanetCellController: PlanetView {
+
+    private let delegate: PlanetCellControllerDelegate
+    private var cell: PlanetCell?
     
-    init(viewModel: PlanetViewModel) {
-        self.viewModel = viewModel
+    init(delegate: PlanetCellControllerDelegate) {
+        self.delegate = delegate
     }
     
     func view(in tableView: UITableView) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "PlanetCell") as! PlanetCell
-        let planetCell = binded(cell)
-        viewModel.loadMovies()
-        return planetCell
+        cell = tableView.dequeueReusableCell()
+        delegate.didRequestMovie()
+        cell?.startLoading()
+        return cell!
     }
     
-    private func binded(_ cell: PlanetCell) -> PlanetCell {
-        cell.nameLabel.text = viewModel.name
-        cell.populationLabel.text = "Population: \(viewModel.population)"
-        
-        viewModel.onMovieLoad = { [weak cell, weak self] movies in
-            guard let self = self, !self.cancelLoading else { return }
-            DispatchQueue.main.async {
-                cell?.moviesLabel.text = movies.movieList()
-            }
-        }
-        
-        viewModel.onMovieLoadingStateChange = { [weak cell] isLoading in
-            DispatchQueue.main.async {
-                cell?.isLoading = isLoading
-            }
-        }
-        
-        return cell
+    func display(_ viewModel: PlanetViewModel) {
+       // DispatchQueue.main.async {
+            self.cell?.nameLabel.text = viewModel.name
+            self.cell?.populationLabel.text = "Population: \(viewModel.population)"
+            self.cell?.moviesLabel.text = viewModel.movies.movieList()
+            self.cell?.stopLoading()
+      //  }
     }
+    
     
     func preload() {
-        viewModel.loadMovies()
+        delegate.didRequestMovie()
     }
     
     func cancelLoad() {
-        cancelLoading = true
-        viewModel.cancelMovieLoad()
+        releaseCellForReuse()
+        delegate.didCancelRequest()
+    }
+    
+    private func releaseCellForReuse() {
+        cell = nil
+    }
+}
+
+extension UITableView {
+    func dequeueReusableCell<T: UITableViewCell>() -> T {
+        let identifier = String(describing: T.self)
+        return dequeueReusableCell(withIdentifier: identifier) as! T
     }
 }
 

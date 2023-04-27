@@ -12,7 +12,7 @@ final class PlanetsAPIEndToEndTests: XCTestCase {
 
     func test_httpGETResponse_matchesExpectedResult() {
         let testServerURL = URL(string: "https://swapi.dev/api/planets/")!
-        let client = URLSessionHTTPClient()
+        let client = URLSessionHTTPClient(session: URLSession(configuration: .ephemeral))
         let loader = RemotePlanetsLoader(url: testServerURL, client: client)
         
         trackForMemoryLeaks(client)

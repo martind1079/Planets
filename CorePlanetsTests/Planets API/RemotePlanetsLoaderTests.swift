@@ -119,7 +119,11 @@ class RemotePlanetsLoaderTests: XCTestCase {
         
     private func makePlanet(name: String, rotationPeriod: String, orbitalPeriod: String, diameter: String, climate: String, gravity: String, terrain: String, surfaceWater: String, population: String, residents: [String], films: [String], created: String, edited: String, url: String) -> (model: Planet, json: [String: Any]) {
         
-        let item = Planet(name: name, rotationPeriod: rotationPeriod, orbitalPeriod: orbitalPeriod, diameter: diameter, climate: climate, gravity: gravity, terrain: terrain, surfaceWater: surfaceWater, population: population, residents: residents, films: films, created: created, edited: edited, url: url)
+        let movies = films.map {
+            Movie(title: "", url: $0, openingCrawl: "")
+        }
+        
+        let item = Planet(name: name, rotationPeriod: rotationPeriod, orbitalPeriod: orbitalPeriod, diameter: diameter, climate: climate, gravity: gravity, terrain: terrain, surfaceWater: surfaceWater, population: population, residents: residents, films: movies, created: created, edited: edited, url: url)
         
         let json = [
             "name": name,

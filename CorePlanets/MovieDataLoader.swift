@@ -13,5 +13,5 @@ public protocol MovieDataLoaderTask {
 
 public protocol MovieDataLoader {
     typealias Result = Swift.Result<[Movie], Error>
-    func loadMovies(from paths: [String], completion: @escaping (Result) -> Void) -> MovieDataLoaderTask
+    func loadMovies(from paths: [String], forURL: String, completion: @escaping (Result) -> Void) -> MovieDataLoaderTask
 }

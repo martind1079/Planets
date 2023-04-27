@@ -53,34 +53,24 @@ extension ManagedPlanet {
             managed.edited = local.edited
             managed.url = local.url
             
-            managed.residents = NSOrderedSet(array: local.residents.map { ManagedResident.with(context: context, name: $0)})
-            managed.films = NSOrderedSet(array: local.films.map { ManagedFilm.with(context: context, title: $0)})
+            managed.films = NSOrderedSet(array: local.films.map { ManagedFilm.with(context: context, movie: $0)})
             return managed
         })
     }
     
     var local: LocalPlanet {
-        let residentNames: [String] = residents.compactMap { ($0 as? ManagedResident)?.name ?? nil }
-        let filmNames: [String] = films.compactMap { ($0 as? ManagedFilm)?.title ?? nil }
+        let movies: [Movie] = films.compactMap { Movie.from(managed: $0 as! ManagedFilm) }
         
-        return LocalPlanet(name: name, rotationPeriod: rotationPeriod, orbitalPeriod: orbitalPeriod, diameter: diameter, climate: climate, gravity: gravity, terrain: terrain, surfaceWater: surfaceWater, population: population, residents: residentNames, films: filmNames, created: created, edited: edited, url: url)
+        return LocalPlanet(name: name, rotationPeriod: rotationPeriod, orbitalPeriod: orbitalPeriod, diameter: diameter, climate: climate, gravity: gravity, terrain: terrain, surfaceWater: surfaceWater, population: population, residents: [], films: movies, created: created, edited: edited, url: url)
     }
 }
 
 extension ManagedFilm {
-    static func with(context: NSManagedObjectContext, title: String) -> ManagedFilm {
+    static func with(context: NSManagedObjectContext, movie: Movie) -> ManagedFilm {
         let managed = ManagedFilm(context: context)
-        managed.title = title
+        managed.title = movie.title
+        managed.path = movie.url
+        managed.descriptor = movie.openingCrawl
         return managed
     }
 }
-
-extension ManagedResident {
-    static func with(context: NSManagedObjectContext, name: String) -> ManagedResident {
-        let managed = ManagedResident(context: context)
-        managed.name = name
-        return managed
-    }
-}
-
-

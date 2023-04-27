@@ -18,13 +18,13 @@ public struct LocalPlanet: Equatable {
     public let surfaceWater: String
     public let population: String
     public let residents: [String]
-    public let films: [String]
+    public let films: [Movie]
     public let created: String
     public let edited: String
     public let url: String
     
     
-    public init(name: String, rotationPeriod: String, orbitalPeriod: String, diameter: String, climate: String, gravity: String, terrain: String, surfaceWater: String, population: String, residents: [String], films: [String], created: String, edited: String, url: String) {
+    public init(name: String, rotationPeriod: String, orbitalPeriod: String, diameter: String, climate: String, gravity: String, terrain: String, surfaceWater: String, population: String, residents: [String], films: [Movie], created: String, edited: String, url: String) {
         self.name = name
         self.rotationPeriod = rotationPeriod
         self.orbitalPeriod = orbitalPeriod

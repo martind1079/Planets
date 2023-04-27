@@ -7,11 +7,16 @@
 
 import Foundation
 
-public struct Movie: Decodable {
+public struct Movie: Codable, Equatable {
     public var title: String
+    public var url: String
+    public var openingCrawl: String
     
-    public init(title: String) {
+    
+    public init(title: String, url: String, openingCrawl: String) {
         self.title = title
+        self.url = url
+        self.openingCrawl = openingCrawl
     }
 }
 

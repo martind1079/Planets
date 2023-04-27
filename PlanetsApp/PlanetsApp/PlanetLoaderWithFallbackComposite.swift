@@ -22,6 +22,10 @@ class PlanetLoaderWithFallbackComposite: PlanetsLoader {
         primaryLoader.load { [weak self] result in
             switch result {
             case .success(let planets):
+                guard !planets.isEmpty else {
+                    self?.fallbackLoader.load(completion: completion)
+                    return
+                }
                 completion(.success(planets))
             case .failure:
                 self?.fallbackLoader.load(completion: completion)

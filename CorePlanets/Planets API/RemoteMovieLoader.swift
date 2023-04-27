@@ -61,8 +61,8 @@ public final class RemoteMovieLoader: MovieDataLoader {
                 case let .success((data, response)):
                     if response.statusCode == 200, !data.isEmpty {
                         let decoder = JSONDecoder()
+                        decoder.keyDecodingStrategy = .convertFromSnakeCase
                         if let movie = try? decoder.decode(Movie.self, from: data) {
-                           // task.complete(with: .success(movies))
                             capturedMovies.append(movie)
                             if count == paths.count {
                                 task.complete(with: .success(capturedMovies))
@@ -84,7 +84,7 @@ public final class RemoteMovieLoader: MovieDataLoader {
     
     
     @discardableResult
-    public func loadMovies(from paths: [String], completion: @escaping (MovieDataLoader.Result) -> Void) -> MovieDataLoaderTask {
+    public func loadMovies(from paths: [String], forURL: String, completion: @escaping (MovieDataLoader.Result) -> Void) -> MovieDataLoaderTask {
         let task = HTTPClientTaskWrapper(completion)
         loadIndividualMovie(paths: paths, task: task, completion: completion)
         return task

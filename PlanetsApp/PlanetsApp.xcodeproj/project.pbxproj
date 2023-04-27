@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		82270F1D29F81343005705CE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82270F1C29F81343005705CE /* AppDelegate.swift */; };
 		82270F1F29F81343005705CE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82270F1E29F81343005705CE /* SceneDelegate.swift */; };
-		82270F2129F81343005705CE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82270F2029F81343005705CE /* ViewController.swift */; };
 		82270F2429F81343005705CE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 82270F2229F81343005705CE /* Main.storyboard */; };
 		82270F2629F81344005705CE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 82270F2529F81344005705CE /* Assets.xcassets */; };
 		82270F2929F81344005705CE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 82270F2729F81344005705CE /* LaunchScreen.storyboard */; };
@@ -18,6 +17,9 @@
 		82270F4A29F815EF005705CE /* PlanetsIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82270F4729F815EF005705CE /* PlanetsIOS.framework */; };
 		82270F4B29F815EF005705CE /* PlanetsIOS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 82270F4729F815EF005705CE /* PlanetsIOS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		82270F4E29F84037005705CE /* PlanetLoaderWithFallbackComposite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82270F4D29F84037005705CE /* PlanetLoaderWithFallbackComposite.swift */; };
+		822D113329F8524B0047D179 /* MovieDataLoaderWithFallbackComposite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 822D113229F8524B0047D179 /* MovieDataLoaderWithFallbackComposite.swift */; };
+		822D113729F860250047D179 /* PlanetLoaderCacheDecorator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 822D113629F860250047D179 /* PlanetLoaderCacheDecorator.swift */; };
+		822D113B29F86B1D0047D179 /* MovieDataLoaderCacheDecorator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 822D113A29F86B1D0047D179 /* MovieDataLoaderCacheDecorator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -39,7 +41,6 @@
 		82270F1929F81343005705CE /* PlanetsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlanetsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		82270F1C29F81343005705CE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		82270F1E29F81343005705CE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		82270F2029F81343005705CE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		82270F2329F81343005705CE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		82270F2529F81344005705CE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		82270F2829F81344005705CE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -47,6 +48,9 @@
 		82270F4629F815EF005705CE /* CorePlanets.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CorePlanets.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		82270F4729F815EF005705CE /* PlanetsIOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = PlanetsIOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		82270F4D29F84037005705CE /* PlanetLoaderWithFallbackComposite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetLoaderWithFallbackComposite.swift; sourceTree = "<group>"; };
+		822D113229F8524B0047D179 /* MovieDataLoaderWithFallbackComposite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDataLoaderWithFallbackComposite.swift; sourceTree = "<group>"; };
+		822D113629F860250047D179 /* PlanetLoaderCacheDecorator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetLoaderCacheDecorator.swift; sourceTree = "<group>"; };
+		822D113A29F86B1D0047D179 /* MovieDataLoaderCacheDecorator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDataLoaderCacheDecorator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,12 +88,14 @@
 			children = (
 				82270F1C29F81343005705CE /* AppDelegate.swift */,
 				82270F1E29F81343005705CE /* SceneDelegate.swift */,
-				82270F2029F81343005705CE /* ViewController.swift */,
 				82270F2229F81343005705CE /* Main.storyboard */,
 				82270F2529F81344005705CE /* Assets.xcassets */,
 				82270F2729F81344005705CE /* LaunchScreen.storyboard */,
 				82270F2A29F81344005705CE /* Info.plist */,
 				82270F4D29F84037005705CE /* PlanetLoaderWithFallbackComposite.swift */,
+				822D113229F8524B0047D179 /* MovieDataLoaderWithFallbackComposite.swift */,
+				822D113629F860250047D179 /* PlanetLoaderCacheDecorator.swift */,
+				822D113A29F86B1D0047D179 /* MovieDataLoaderCacheDecorator.swift */,
 			);
 			path = PlanetsApp;
 			sourceTree = "<group>";
@@ -175,10 +181,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				822D113B29F86B1D0047D179 /* MovieDataLoaderCacheDecorator.swift in Sources */,
 				82270F4E29F84037005705CE /* PlanetLoaderWithFallbackComposite.swift in Sources */,
-				82270F2129F81343005705CE /* ViewController.swift in Sources */,
+				822D113329F8524B0047D179 /* MovieDataLoaderWithFallbackComposite.swift in Sources */,
 				82270F1D29F81343005705CE /* AppDelegate.swift in Sources */,
 				82270F1F29F81343005705CE /* SceneDelegate.swift in Sources */,
+				822D113729F860250047D179 /* PlanetLoaderCacheDecorator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

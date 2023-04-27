@@ -7,10 +7,10 @@
 
 import Foundation
 
-public final class LocalPlanetsLoader {
+public final class LocalPlanetsLoader: PlanetsLoader, PlanetCache {
     private let store: PlanetsStore
     
-    public typealias SaveResult = Result<Void, Error>
+    public typealias SaveResult = PlanetCache.Result
     public typealias LoadResult = PlanetsLoader.Result
     
     public init(store: PlanetsStore) {
@@ -33,17 +33,19 @@ public final class LocalPlanetsLoader {
     public func load(completion: @escaping (LoadResult) -> Void) {
         store.retrieve { [weak self] result in
             guard self != nil else { return }
-            switch result {
-            case let .failure(error):
-                self?.store.deleteCachedPlanets { _ in }
-                completion(.failure(error))
-
-            case let .success(.some(planets)):
-                completion(.success(planets.toModels()))
-                
-            case .success:
-                completion(.success([]))
-            }
+                switch result {
+                case let .failure(error):
+                    self?.store.deleteCachedPlanets { _ in }
+                    DispatchQueue.main.async {
+                        completion(.failure(error))
+                    }
+                case let .success(.some(planets)):
+                    completion(.success(planets.toModels()))
+                    
+                case .success:
+                    completion(.success([]))
+                }
+            
         }
     }
     

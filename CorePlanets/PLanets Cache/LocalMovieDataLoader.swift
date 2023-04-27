@@ -12,7 +12,7 @@ public final class LocalMovieDataLoader {
 	}
 }
 
-extension LocalMovieDataLoader {
+extension LocalMovieDataLoader: MovieCache {
 	public typealias SaveResult = Result<Void, Error>
 
 	public enum SaveError: Error {
@@ -56,13 +56,17 @@ extension LocalMovieDataLoader: MovieDataLoader {
 		}
 	}
 	
-	public func loadMovies(from paths: [String], completion: @escaping (LoadResult) -> Void) -> MovieDataLoaderTask {
+    public func loadMovies(from paths: [String], forURL url: String, completion: @escaping (LoadResult) -> Void) -> MovieDataLoaderTask {
 		let task = LoadMovieDataTask(completion)
-        store.retrieve(dataForURL: paths.first!) { [weak self] result in
+        store.retrieve(dataForURL: url) { [weak self] result in
 			guard self != nil else { return }
 			
             if case let movies = try? result.get() {
-                task.complete(with: .success(movies!))
+                guard let movies = movies, !movies.isEmpty else {
+                    task.complete(with: .failure(LoadError.notFound))
+                    return
+                }
+                task.complete(with: .success(movies))
             } else {
                 task.complete(with: .failure(LoadError.notFound))
             }
