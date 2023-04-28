@@ -22,7 +22,7 @@ The Remote Movie Loader needs some extra work, Ideally I would make an async fun
 
 ## Testing
 
-Tests include isolated and integration tests where no mocks are used but only happy paths are tested.
+Tests include isolated component tests, and integration tests (where no mocks are used but only happy paths are tested).
 Localisations are also tested so that all Localised string within the Presentation bundle have a key value pair that are not equal
 
 Given more time I would like to test also the Composite and Decorator classes to further increase coverage
