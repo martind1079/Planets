@@ -1,7 +1,7 @@
 
 # Planets
 
-Planets is a demo app utilising caching and remote strategies to display data about some poular planets.
+Planets is a demo app utilising caching and remote strategies to display data about some popular planets.
 
 ## Installation
 
@@ -29,4 +29,4 @@ Given more time I would like to test also the Composite and Decorator classes to
 
 ## Continuous intgegration 
 
-A Travis CI server is used to run the CI scheme test targets on any push to the main branch. The more expensive integration tests are run on this scheme to ensure much quicker test runs when developing, which ideal should be near instant to ensure fast feedback cycles on feature adition and refactoring.
+A Travis CI server is used to run the CI scheme test targets on any push to the main branch. The more expensive integration tests are run on this scheme to ensure much quicker test runs when developing, which should quick to ensure fast feedback cycles on any future feature aditions or refactoring.
