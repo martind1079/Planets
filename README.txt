@@ -26,3 +26,7 @@ Tests include isolated and integration tests where no mocks are used but only ha
 Localisations are also tested so that all Localised string within the Presentation bundle have a key value pair that are not equal
 
 Given more time I would like to test also the Composite and Decorator classes to further increase coverage
+
+## Continuous intgegration 
+
+A Travis CI server is used to run the CI scheme test targets on any push to the main branch. The more expensive integration tests are run on this scheme to ensure much quicker test runs when developing, which ideal should be near instant to ensure fast feedback cycles on feature adition and refactoring.
