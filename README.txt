@@ -18,6 +18,7 @@ There are memory management techniques to weakify some components at the compost
 ## Future work
 
 The compostion is mostly done in the SceneDelegate and better use could be made of injection containers to keep this tidy. As features grow I would aim to use an injection container strategy and flesh out relevant scopes for object lifetimes. 
+The Remote Movie Loader needs some extra work, Ideally I would make an async function for fetching Movies and loop through the URLS capturing results avoid ing the nesting. 
 
 ## Testing
 
