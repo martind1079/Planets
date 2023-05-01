@@ -36,7 +36,6 @@ final class FeedRefreshController: NSObject, FeedLoadingView {
     private func loadView() -> UIRefreshControl {
         let view = UIRefreshControl()
         view.tintColor = .white
-       // view.backgroundColor = .clear
         view.addTarget(self, action: #selector(refresh), for: .valueChanged)
         return view
     }

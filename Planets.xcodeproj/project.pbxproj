@@ -68,6 +68,11 @@
 		82EF16BC29FAF132007034C2 /* Planet.strings in Resources */ = {isa = PBXBuildFile; fileRef = 82EF16BE29FAF132007034C2 /* Planet.strings */; };
 		82EF16C229FAF1EF007034C2 /* PlanetsLocalizationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82EF16C129FAF1EF007034C2 /* PlanetsLocalizationTests.swift */; };
 		82EF16C429FB17A9007034C2 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82EF16C329FB17A9007034C2 /* Strings.swift */; };
+		82EF16CB29FD24C9007034C2 /* MainQueueDispatchDecorator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82EF16CA29FD24C9007034C2 /* MainQueueDispatchDecorator.swift */; };
+		82EF16CD29FD254F007034C2 /* WeakRefVirtualProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82EF16CC29FD254F007034C2 /* WeakRefVirtualProxy.swift */; };
+		82EF16CF29FFBE21007034C2 /* FeedViewAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82EF16CE29FFBE21007034C2 /* FeedViewAdapter.swift */; };
+		82EF16D129FFBE58007034C2 /* MovieLoaderPresentationAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82EF16D029FFBE58007034C2 /* MovieLoaderPresentationAdapter.swift */; };
+		82EF16D329FFBE8E007034C2 /* PlanetsLoaderPresentationAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82EF16D229FFBE8E007034C2 /* PlanetsLoaderPresentationAdapter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -181,6 +186,11 @@
 		82EF16BF29FAF178007034C2 /* fr-CA */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "fr-CA"; path = "fr-CA.lproj/Planet.strings"; sourceTree = "<group>"; };
 		82EF16C129FAF1EF007034C2 /* PlanetsLocalizationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetsLocalizationTests.swift; sourceTree = "<group>"; };
 		82EF16C329FB17A9007034C2 /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
+		82EF16CA29FD24C9007034C2 /* MainQueueDispatchDecorator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainQueueDispatchDecorator.swift; sourceTree = "<group>"; };
+		82EF16CC29FD254F007034C2 /* WeakRefVirtualProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeakRefVirtualProxy.swift; sourceTree = "<group>"; };
+		82EF16CE29FFBE21007034C2 /* FeedViewAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewAdapter.swift; sourceTree = "<group>"; };
+		82EF16D029FFBE58007034C2 /* MovieLoaderPresentationAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieLoaderPresentationAdapter.swift; sourceTree = "<group>"; };
+		82EF16D229FFBE8E007034C2 /* PlanetsLoaderPresentationAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetsLoaderPresentationAdapter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -268,6 +278,11 @@
 			isa = PBXGroup;
 			children = (
 				82270E4D29F6D91C005705CE /* FeedUIComposer.swift */,
+				82EF16CA29FD24C9007034C2 /* MainQueueDispatchDecorator.swift */,
+				82EF16CC29FD254F007034C2 /* WeakRefVirtualProxy.swift */,
+				82EF16CE29FFBE21007034C2 /* FeedViewAdapter.swift */,
+				82EF16D029FFBE58007034C2 /* MovieLoaderPresentationAdapter.swift */,
+				82EF16D229FFBE8E007034C2 /* PlanetsLoaderPresentationAdapter.swift */,
 			);
 			path = Composers;
 			sourceTree = "<group>";
@@ -739,9 +754,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				82038D1729F9223500FFE597 /* PlanetsPresenter.swift in Sources */,
+				82EF16CB29FD24C9007034C2 /* MainQueueDispatchDecorator.swift in Sources */,
+				82EF16D329FFBE8E007034C2 /* PlanetsLoaderPresentationAdapter.swift in Sources */,
+				82EF16CD29FD254F007034C2 /* WeakRefVirtualProxy.swift in Sources */,
 				82270E4B29F6CEC4005705CE /* PlanetCellController.swift in Sources */,
 				82EF16C429FB17A9007034C2 /* Strings.swift in Sources */,
+				82EF16CF29FFBE21007034C2 /* FeedViewAdapter.swift in Sources */,
 				82038D1929F9243B00FFE597 /* FeedPresenter.swift in Sources */,
+				82EF16D129FFBE58007034C2 /* MovieLoaderPresentationAdapter.swift in Sources */,
 				82270E4E29F6D91C005705CE /* FeedUIComposer.swift in Sources */,
 				8270CDCA29F68BB9009AE1F4 /* PlanetsViewController.swift in Sources */,
 				82270E4929F6C895005705CE /* FeedRefreshController.swift in Sources */,
